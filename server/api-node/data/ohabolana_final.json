@@ -5015,8 +5015,7 @@
   {
     "word": "fomba",
     "ohabolana": [
-      "Osivavy naniry volombava : samy tsy ariana ny fomban-dray sy reny.",
-      "Osivavy naniry volombava: samy tsy hariana ny fomban-dray sy reny."
+      "Osivavy naniry volombava : samy tsy ariana ny fomban-dray sy reny."
     ],
     "count": 2
   },
@@ -42084,5 +42083,370 @@
       "Amboa kely tery vozona."
     ],
     "count": 1
+  },
+  {
+    "word": "zafy",
+    "ohabolana": [
+      "Mamy kely toa zafy."
+    ],
+    "count": 1
+  },
+  {
+    "word": "Zafimbazaha",
+    "ohabolana": [
+      "Ody valalany Zafimbazaha, ka izay voky dia miala."
+    ],
+    "count": 1
+  },
+  {
+    "word": "zafin-teny",
+    "ohabolana": [
+      "Hianao tanora, ka be zafin-teny ; manonona hoe: Veloma, ka misafelika.",
+      "Hianao tanora ka no be zafin-teny, manonona ny hoe  \"veloma\"  ka misafelika."
+    ],
+    "count": 2
+  },
+  {
+    "word": "zahana",
+    "ohabolana": [
+      "Saobakaka am-body riana : fiadanana no nozahana, ka tabataba no hita."
+    ],
+    "count": 1
+  },
+  {
+    "word": "zahao",
+    "ohabolana": [
+      "Papango didimaso tsy fihinana : samy ratsy, ka aza mifanenitra ; papango didimaso, voron-tsy fihinana, esory ny taimaso vao miresaka amiko.",
+      "Papango didimaso, voron-tsy fihinana: zahao aloha ny tarehy vao mifosa ny sasany.",
+      "Papango didimaso, voron-tsy fihinana, zahao aloha ny tena vao mifosa ny sasany."
+    ],
+    "count": 3
+  },
+  {
+    "word": "zahatra",
+    "ohabolana": [
+      "Mampitaha lakana amin-jahatra.",
+      "Mampitaha lakana sy zahatra."
+    ],
+    "count": 2
+  },
+  {
+    "word": "zairina",
+    "ohabolana": [
+      "Ny soa atao no orim-bato, aty ny soa azo no vatsy zairina."
+    ],
+    "count": 1
+  },
+  {
+    "word": "zaka",
+    "ohabolana": [
+      "Zakan' olon-drery, zakan' olon-droa, zakan' olon-telo, zakan' olona efatra."
+    ],
+    "count": 1
+  },
+  {
+    "word": "zana-baratra",
+    "ohabolana": [
+      "Mitaiza zana-baratra : mitaiza raha hamono."
+    ],
+    "count": 1
+  },
+  {
+    "word": "Zanadoria",
+    "ohabolana": [
+      "Rovitra an-karona, hoatry ny lamban' ny Zanadoria.",
+      "Rovitra an-karona, ohatra ny lambany Zanadoria."
+    ],
+    "count": 2
+  },
+  {
+    "word": "zanahary",
+    "ohabolana": [
+      "Akora latsaka an-drano : mandiny Zanahary hamelona."
+    ],
+    "count": 1
+  },
+  {
+    "word": "zanaka",
+    "ohabolana": [
+      "Aleo lahy adala zanaka lahimatoa toy izay adala loholona."
+    ],
+    "count": 1
+  },
+  {
+    "word": "Zanakalondrano",
+    "ohabolana": [
+      "Aza midrahodraho tahaka ny Zanakalondrano.",
+      "Aza midrahodraho, toy ny Zanakalondrano.",
+      "Midrahodraho toy ny Zanakalondrano."
+    ],
+    "count": 3
+  },
+  {
+    "word": "zandiana",
+    "ohabolana": [
+      "Ambanivohitra mitafy zandiana, ka jenitra alohan'  ny lakaolina.",
+      "Ambanivohitra mitafy zandiana, ka jenitra alohan' ny lakoly.",
+      "Ambanivohitra mitafy zandiana, ka jenitra alohan' ny lakolina."
+    ],
+    "count": 3
+  },
+  {
+    "word": "zandry",
+    "ohabolana": [
+      "Akory no ny zokiny eroa am-bavahady, fa ny zandriny eroa an-kianja.",
+      "Akory no zokiny eroa am-bavahady, ka zandriny eroa an-kianja ?"
+    ],
+    "count": 2
+  },
+  {
+    "word": "zao",
+    "ohabolana": [
+      "Miinvite vahiny tsy avy zao ka sady vintsy ro afake asa."
+    ],
+    "count": 1
+  },
+  {
+    "word": "zara",
+    "ohabolana": [
+      "Andevolahy nifaham-boatavo : zara fa nihinana.",
+      "Hovalahy nifaham-boatavo, ka zara raha nifahana."
+    ],
+    "count": 2
+  },
+  {
+    "word": "zaraina",
+    "ohabolana": [
+      "Ny hanina zaraina mora lany; ny raharaha zaraina mora vita ; ny sakafo lany mahatsara vava.",
+      "Ny hanin-jarai-mora lany, ny entan-jarai-mora zaka, ny sakafo lany mahatsara vava!",
+      "Ny hani-zarai-mora lany ; ny raharaha-zarai-mora vita."
+    ],
+    "count": 3
+  },
+  {
+    "word": "zarana",
+    "ohabolana": [
+      "Akoho avy no ilam-pamaky.",
+      "Akoho avy ve ka ilana famaky!",
+      "Tsy mety raha akoho no rasaina, ka famaky no tadiavina.",
+      "Akoho iray no hovonoina ka famaky tsara zarana no indramina.",
+      "Akoho no rasaina, ka famaky no tadiavina."
+    ],
+    "count": 5
+  },
+  {
+    "word": "zaridaina",
+    "ohabolana": [
+      "Taola-mangahazo natao zaridaina : samy ti-hanjary."
+    ],
+    "count": 1
+  },
+  {
+    "word": "zato",
+    "ohabolana": [
+      "Afo lavitra tsy azo amindroana ; vary zato tsy enti-mandeha.",
+      "Ro tsy atoraka ; vary zato tsy enti-mandeha.",
+      "Vary zato tsy enti-mandeha."
+    ],
+    "count": 3
+  },
+  {
+    "word": "zatovo",
+    "ohabolana": [
+      "Aza manao zatovon'  ny any ary zazalahin'  ny aty.",
+      "Aza manao zatovon' ny aty, zazalahin' ny any.",
+      "Zatovon' ny aty, zazalahin' ny any."
+    ],
+    "count": 3
+  },
+  {
+    "word": "zatra",
+    "ohabolana": [
+      "Aza manao ompikely zatra lapa, ka mitsipi-drora am-pihinanana.",
+      "Aza manao ompikely zatra ny lapa, ka mitsipi-drora mampihinana Andriana."
+    ],
+    "count": 2
+  },
+  {
+    "word": "zavarina",
+    "ohabolana": [
+      "Zavarin' ny fitia manan-tombo: intelo no mifampiarahaba.",
+      "Zavarin' ny fitia manan-tombo ka intelo no miarahaba.",
+      "Zavarin'  ny fitia manan-tombo, ka intelo no mifampiarahaba.",
+      "Zavarin' ny fitia manan-tombo, ka mifampiarahaba kely matetika."
+    ],
+    "count": 4
+  },
+  {
+    "word": "zavatra",
+    "ohabolana": [
+      "Andringitra anie ka saro-javatra : ny zavatra moa no haninona fa hianao no tia katsakatsaka.",
+      "Andringitra anie koa saro-javatra : ny zavatra moa no haninona, fa hianao no tia katsakatsaka."
+    ],
+    "count": 2
+  },
+  {
+    "word": "zavona",
+    "ohabolana": [
+      "Aza miakatra ho rahona ka mihelin-ko zavona."
+    ],
+    "count": 1
+  },
+  {
+    "word": "zavozavo",
+    "ohabolana": [
+      "Razavozavo sy Raerikerika: mandina, miara-mandina; varina, miara-barina.",
+      "Razavozavo sy Raerikerika : mandina miara-mandina, vazina miara-bazina."
+    ],
+    "count": 2
+  },
+  {
+    "word": "zaza",
+    "ohabolana": [
+      "Adaladala fiandry trano, ka homam-barin-jaza."
+    ],
+    "count": 1
+  },
+  {
+    "word": "zazabodo",
+    "ohabolana": [
+      "Sariolona an-tanan-jazabodo, ka hindrahindrain-kazera."
+    ],
+    "count": 1
+  },
+  {
+    "word": "zazahova",
+    "ohabolana": [
+      "Hovalahy tsy hendry, ka zazahova vao hiavo-tena.",
+      "Hovalahy tsy hendry ka zazahova vao manavo-tena."
+    ],
+    "count": 2
+  },
+  {
+    "word": "zehena",
+    "ohabolana": [
+      "Ilay mitondra hodi-nato : ka sady zehena no didiana.",
+      "Ny hodi-nato no sady zehena no didiana."
+    ],
+    "count": 2
+  },
+  {
+    "word": "zezika",
+    "ohabolana": [
+      "Akondro efa namoa, ka ny sisa no atero zezika fa izy lasan-kiraika.",
+      "Akondro efa namoa : ny sisa no atero zezika, fa izy lasan-kiraika."
+    ],
+    "count": 2
+  },
+  {
+    "word": "zina",
+    "ohabolana": [
+      "Na zina aza ny taona, ny kamo ve tsy ho mosarena?"
+    ],
+    "count": 1
+  },
+  {
+    "word": "zinga",
+    "ohabolana": [
+      "Aza manao rano dikain' ny zinga.",
+      "Nahoana no manao rano dikain'  ny zinga ?"
+    ],
+    "count": 2
+  },
+  {
+    "word": "z' inona",
+    "ohabolana": [
+      "\"Ahoana izany?\" hoy Ramarenina, kanjo tsy mandre izy.",
+      "Ahoana izany? hoy Ramarenina, kanjo tsy mba nandre izy.",
+      "Ahoana izany ? hoy Ramarenina, kanjo tsy nandre izy.",
+      "Ahoanao izany ? hoy Ramarenina; kanjo tsy mandre izy.",
+      "Inona izany? hoy Ramarenina, kanjo tsy mba nandre izy.",
+      "Zinona izany ? hoy Ramarenina; kanjo tsy mandre izy.",
+      "Zinona izany ? hoy Ramarenina, kanjo tsy nandre izy."
+    ],
+    "count": 7
+  },
+  {
+    "word": "zo",
+    "ohabolana": [
+      "Ny volon-tany samy hafa: fa raha any aminay izany, dia vovon' alika, fa atý aminareo angaha no olona.",
+      "Ny zon-tany samy hafa angaha, fa raha any aminay izany dia vovòn'  amboa, fa aty aminareo angaha no olona."
+    ],
+    "count": 2
+  },
+  {
+    "word": "zohina",
+    "ohabolana": [
+      "Aza atao moni-manaraka, fa havana matoa nozohina.",
+      "Aza manao moni-manaraka."
+    ],
+    "count": 2
+  },
+  {
+    "word": "zoina",
+    "ohabolana": [
+      "Hanao ahoanan' ny efa nozoiny, ka tsy haharitra ny maharary."
+    ],
+    "count": 1
+  },
+  {
+    "word": "zoky",
+    "ohabolana": [
+      "Adala toa zokim-bomanga : ny lehibe indray no hosenan-davenona.",
+      "Adala toa zokim-bomanga : ny lehibe indray no milatsaka ao am-patana.",
+      "Adala toy ny zokim-bomanga, ka ny lehibe indray no hosenan-davenona.",
+      "Zokim-bomanga: ny lehibe indray no milatsaka am-patana."
+    ],
+    "count": 4
+  },
+  {
+    "word": "zoma",
+    "ohabolana": [
+      "Ny akoho no tsy nanidina : tsy nahandry ny andro zoma.",
+      "Ty nahavy ty akoho tsy hitily io ty tsy fahaliñisañi ty anjo zoma."
+    ],
+    "count": 2
+  },
+  {
+    "word": "zompona",
+    "ohabolana": [
+      "Vely zompona ; hatony havenina."
+    ],
+    "count": 1
+  },
+  {
+    "word": "zoro",
+    "ohabolana": [
+      "Matokin' ody voalavo angaha hianao, no mamono hena an-joron-damba.",
+      "Matoky ody voalavo, ka manao hena an-joron-damba.",
+      "Matoky ody voalavo va hianao no manao hena an-joron-damba?"
+    ],
+    "count": 3
+  },
+  {
+    "word": "zoto",
+    "ohabolana": [
+      "Ny hakamoana itonoana, ny hazotoana ahandroana.",
+      "Ny laina itonoana, ny zoto andrahoana.",
+      "Ny zoto ahandroana, ny laina itonoana.",
+      "Ny zoto andrahoana; ny laina itonoana.",
+      "Ny zoto handrahoana; ny laina itonoana."
+    ],
+    "count": 5
+  },
+  {
+    "word": "zovina",
+    "ohabolana": [
+      "Manao kitoatoa ohatra ny mpiambina : ny tsy hita no zovina!"
+    ],
+    "count": 1
+  },
+  {
+    "word": "zozoro",
+    "ohabolana": [
+      "Arivo vavy iray tanàna tsy mifandrandrana, toy ny zozoro.",
+      "Ny zozoro no maro vavy tsy mifandrandrana."
+    ],
+    "count": 2
   }
 ]

@@ -32,6 +32,11 @@ const userController = {
         } = req.body
         // file
         
+        // Validation des champs requis
+        if (!name || !last_name || !email || !password) {
+            return res.status(400).json({ error: "Tsy maintsy fenoina ny saha rehetra" });
+        }
+
         try {
             let saltRounds = 10;
             const hash = await bcrypt.hash(password, saltRounds);
@@ -48,8 +53,28 @@ const userController = {
             res.status(200).send(result)            
         }
         catch (error: any) {
-            console.log(error)
-            res.status(500).send(error)
+            console.log("Error creating user:", error)
+            
+            // Gérer les erreurs Prisma spécifiques
+            let errorMessage = "Tsy nahomby ny famoronana ny mpampiasa";
+            
+            if (error && error.message) {
+                const errorMsg = error.message.toString();
+                
+                if (errorMsg.includes("Unique constraint") || errorMsg.includes("Unique constraint failed")) {
+                    errorMessage = "Efa nampiasa io email io";
+                } else if (errorMsg.includes("P1001") || errorMsg.includes("Can't reach database")) {
+                    errorMessage = "Tsy afaka mampifandray amin'ny base de données. Jereo fa mbola miasa ny MySQL.";
+                } else if (errorMsg.includes("Data error")) {
+                    errorMessage = errorMsg.replace("Data error: ", "");
+                } else {
+                    errorMessage = errorMsg;
+                }
+            } else if (error && typeof error === 'string') {
+                errorMessage = error;
+            }
+            
+            res.status(500).json({ error: errorMessage })
         }
     },
     login: async (req: Request, res: Response): Promise<void> => {
@@ -61,14 +86,20 @@ const userController = {
                 if (verified) {
                     res.status(200).send(user);
                 } else {
-                    res.status(401).send("Mot de passe incorrect");
+                    res.status(401).json({ error: "Teny miafina diso" });
                 }
             } else {
-                res.status(401).send("Utilisateur non existant");
+                res.status(401).json({ error: "Tsy misy ny mpampiasa" });
             }
         } catch (error: any) {
-            console.log(error);
-            res.status(500).send(error);
+            console.log("Error during login:", error);
+            let errorMessage = "Tsy nahomby ny fidirana";
+            
+            if (error && error.message) {
+                errorMessage = error.message.toString();
+            }
+            
+            res.status(500).json({ error: errorMessage });
         }
     },
     update: async (req: Request, res: Response) => {

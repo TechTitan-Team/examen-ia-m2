@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function ChatPanel() {
+export default function ChatPanel({ attachments = [], onRemoveAttachment }) {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
@@ -97,17 +97,55 @@ export default function ChatPanel() {
 
       {/* Input */}
       <div className="p-4 border-t border-slate-200">
-        <div className="flex items-center gap-2">
+        {/* Attachments */}
+        {attachments.length > 0 && (
+          <div className="mb-3 space-y-2">
+            {attachments.map((attachment) => (
+              <div
+                key={attachment.id}
+                className="group relative bg-slate-50 border border-slate-200 rounded-lg p-3 pr-8"
+              >
+                <div className="flex items-start gap-2">
+                  <div className="shrink-0 w-5 h-5 rounded bg-indigo-100 flex items-center justify-center">
+                    <svg className="w-3 h-3 text-indigo-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20 22H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1Zm-1-2V4H5v16h14ZM8 7h8v2H8V7Zm0 4h8v2H8v-2Zm0 4h5v2H8v-2Z"/>
+                    </svg>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs font-medium text-slate-500 mb-1">Selected text</p>
+                    <p className="text-sm text-slate-700 line-clamp-2">{attachment.text}</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => onRemoveAttachment?.(attachment.id)}
+                  className="absolute top-2 right-2 p-1 text-slate-400 hover:text-slate-600 hover:bg-slate-200 rounded transition-colors opacity-0 group-hover:opacity-100"
+                  title="Remove attachment"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <div className="flex gap-2">
           <div className="flex-1 relative">
-            <input
-              type="text"
+            <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleSend()}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  handleSend();
+                }
+              }}
               placeholder="Ask me anything..."
-              className="w-full px-4 py-2.5 pr-10 bg-slate-50 border border-slate-200 rounded-xl text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-400 transition-all"
+              rows={3}
+              className="w-full px-4 py-2.5 pr-10 bg-slate-50 border border-slate-200 rounded-xl text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-400 transition-all resize-none min-h-[76px]"
             />
-            <button className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-slate-400 hover:text-slate-600 transition-colors">
+            <button className="absolute right-2 top-3 p-1.5 text-slate-400 hover:text-slate-600 transition-colors">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
               </svg>
@@ -115,8 +153,8 @@ export default function ChatPanel() {
           </div>
           <button
             onClick={handleSend}
-            disabled={!message.trim()}
-            className="p-2.5 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            disabled={!message.trim() && attachments.length === 0}
+            className="self-end p-2.5 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
@@ -124,19 +162,7 @@ export default function ChatPanel() {
           </button>
         </div>
         <div className="mt-2 flex items-center justify-center gap-2 text-xs text-slate-400">
-          <button className="flex items-center gap-1 hover:text-slate-600 transition-colors">
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            Help
-          </button>
-          <span>•</span>
-          <button className="flex items-center gap-1 hover:text-slate-600 transition-colors">
-            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-            </svg>
-            Quick edits
-          </button>
+          <span>Press Enter to send, Shift+Enter for new line</span>
         </div>
       </div>
     </div>

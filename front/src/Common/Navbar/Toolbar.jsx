@@ -56,24 +56,82 @@ export default function Toolbar({ editor }) {
   ];
 
   const styles = [
-    { label: "Normal", action: () => editor.chain().focus().setParagraph().run() },
-    { label: "Heading 1", action: () => editor.chain().focus().toggleHeading({ level: 1 }).run() },
-    { label: "Heading 2", action: () => editor.chain().focus().toggleHeading({ level: 2 }).run() },
-    { label: "Heading 3", action: () => editor.chain().focus().toggleHeading({ level: 3 }).run() },
-    { label: "Heading 4", action: () => editor.chain().focus().toggleHeading({ level: 4 }).run() },
-    { label: "Heading 5", action: () => editor.chain().focus().toggleHeading({ level: 5 }).run() },
-    { label: "Heading 6", action: () => editor.chain().focus().toggleHeading({ level: 6 }).run() },
+    {
+      label: "Normal",
+      action: () => editor.chain().focus().setParagraph().run(),
+    },
+    {
+      label: "Heading 1",
+      action: () => editor.chain().focus().toggleHeading({ level: 1 }).run(),
+    },
+    {
+      label: "Heading 2",
+      action: () => editor.chain().focus().toggleHeading({ level: 2 }).run(),
+    },
+    {
+      label: "Heading 3",
+      action: () => editor.chain().focus().toggleHeading({ level: 3 }).run(),
+    },
+    {
+      label: "Heading 4",
+      action: () => editor.chain().focus().toggleHeading({ level: 4 }).run(),
+    },
+    {
+      label: "Heading 5",
+      action: () => editor.chain().focus().toggleHeading({ level: 5 }).run(),
+    },
+    {
+      label: "Heading 6",
+      action: () => editor.chain().focus().toggleHeading({ level: 6 }).run(),
+    },
   ];
 
   const textColors = [
-    "#000000", "#434343", "#666666", "#999999", "#B7B7B7", "#CCCCCC", "#D9D9D9", "#EFEFEF", "#F3F3F3", "#FFFFFF",
-    "#980000", "#FF0000", "#FF9900", "#FFFF00", "#00FF00", "#00FFFF", "#4A86E8", "#0000FF", "#9900FF", "#FF00FF",
-    "#E6B8AF", "#F4CCCC", "#FCE5CD", "#FFF2CC", "#D9EAD3", "#D0E0E3", "#C9DAF8", "#CFE2F3", "#D9D2E9", "#EAD1DC",
+    "#000000",
+    "#434343",
+    "#666666",
+    "#999999",
+    "#B7B7B7",
+    "#CCCCCC",
+    "#D9D9D9",
+    "#EFEFEF",
+    "#F3F3F3",
+    "#FFFFFF",
+    "#980000",
+    "#FF0000",
+    "#FF9900",
+    "#FFFF00",
+    "#00FF00",
+    "#00FFFF",
+    "#4A86E8",
+    "#0000FF",
+    "#9900FF",
+    "#FF00FF",
+    "#E6B8AF",
+    "#F4CCCC",
+    "#FCE5CD",
+    "#FFF2CC",
+    "#D9EAD3",
+    "#D0E0E3",
+    "#C9DAF8",
+    "#CFE2F3",
+    "#D9D2E9",
+    "#EAD1DC",
   ];
 
   const highlightColors = [
-    "#FFFF00", "#00FF00", "#00FFFF", "#FF00FF", "#FF0000", "#0000FF",
-    "#FFF2CC", "#D9EAD3", "#D0E0E3", "#CFE2F3", "#D9D2E9", "#EAD1DC",
+    "#FFFF00",
+    "#00FF00",
+    "#00FFFF",
+    "#FF00FF",
+    "#FF0000",
+    "#0000FF",
+    "#FFF2CC",
+    "#D9EAD3",
+    "#D0E0E3",
+    "#CFE2F3",
+    "#D9D2E9",
+    "#EAD1DC",
   ];
 
   const lineSpacings = [
@@ -103,9 +161,12 @@ export default function Toolbar({ editor }) {
   };
 
   const getCurrentAlignment = () => {
-    if (editor.isActive({ textAlign: "center" })) return <TextAlignCenter size={16} weight="bold" />;
-    if (editor.isActive({ textAlign: "right" })) return <TextAlignRight size={16} weight="bold" />;
-    if (editor.isActive({ textAlign: "justify" })) return <TextAlignJustify size={16} weight="bold" />;
+    if (editor.isActive({ textAlign: "center" }))
+      return <TextAlignCenter size={16} weight="bold" />;
+    if (editor.isActive({ textAlign: "right" }))
+      return <TextAlignRight size={16} weight="bold" />;
+    if (editor.isActive({ textAlign: "justify" }))
+      return <TextAlignJustify size={16} weight="bold" />;
     return <TextAlignLeft size={16} weight="bold" />;
   };
 
@@ -125,18 +186,27 @@ export default function Toolbar({ editor }) {
     </button>
   );
 
-  const Dropdown = ({ label, width, children, isOpen, onToggle, maxHeight }) => (
+  const Dropdown = ({
+    label,
+    width,
+    children,
+    isOpen,
+    onToggle,
+    maxHeight,
+  }) => (
     <div className="relative">
       <button
         onClick={onToggle}
         onMouseDown={(e) => e.preventDefault()}
         className="flex items-center gap-1 px-2 py-1 text-sm text-slate-700 hover:bg-slate-100 rounded-md transition-all"
       >
-        <span className="truncate" style={{ width }}>{label}</span>
+        <span className="truncate" style={{ width }}>
+          {label}
+        </span>
         <CaretDown size={12} weight="bold" />
       </button>
       {isOpen && (
-        <div 
+        <div
           className="absolute top-full left-0 mt-1 bg-white border border-slate-200 rounded-lg shadow-lg z-50 min-w-[120px] overflow-y-auto"
           style={{ maxHeight: maxHeight || "auto" }}
         >
@@ -146,7 +216,7 @@ export default function Toolbar({ editor }) {
     </div>
   );
 
-  const ColorPicker = ({ colors, onSelect, currentColor, isOpen, onClose }) => (
+  const ColorPicker = ({ colors, onSelect, currentColor, isOpen, onClose }) =>
     isOpen && (
       <div className="absolute top-full left-0 mt-1 bg-white border border-slate-200 rounded-lg shadow-lg z-50 p-3 min-w-[280px]">
         <div className="grid grid-cols-10 gap-1.5">
@@ -158,15 +228,18 @@ export default function Toolbar({ editor }) {
                 onClose();
               }}
               onMouseDown={(e) => e.preventDefault()}
-              className={`w-6 h-6 rounded border ${currentColor === color ? "ring-2 ring-indigo-500" : "border-slate-200"} hover:scale-110 transition-transform`}
+              className={`w-6 h-6 rounded border ${
+                currentColor === color
+                  ? "ring-2 ring-indigo-500"
+                  : "border-slate-200"
+              } hover:scale-110 transition-transform`}
               style={{ backgroundColor: color }}
               title={color}
             />
           ))}
         </div>
       </div>
-    )
-  );
+    );
 
   const Divider = () => <div className="w-px h-6 bg-slate-200 mx-1" />;
 
@@ -186,22 +259,7 @@ export default function Toolbar({ editor }) {
 
   return (
     <div className="flex items-center gap-0.5 px-3 py-1.5 bg-white border border-slate-200 rounded-xl shadow-sm">
-       {/* Undo/Redo */}
-       <ToolButton
-        onClick={() => editor.chain().focus().undo().run()}
-        title="Undo (Ctrl+Z)"
-      >
-        <ArrowCounterClockwise size={16} weight="bold" />
-      </ToolButton>
 
-      <ToolButton
-        onClick={() => editor.chain().focus().redo().run()}
-        title="Redo (Ctrl+Y)"
-      >
-        <ArrowClockwise size={16} weight="bold" />
-      </ToolButton>
-
-      {/* Style Dropdown */}
       <Dropdown
         label={getCurrentStyle()}
         width="60px"
@@ -342,7 +400,10 @@ export default function Toolbar({ editor }) {
           title="Text color"
         >
           <TextAa size={16} weight="bold" />
-          <div className="w-4 h-1 rounded-sm mt-0.5" style={{ backgroundColor: currentTextColor }} />
+          <div
+            className="w-4 h-1 rounded-sm mt-0.5"
+            style={{ backgroundColor: currentTextColor }}
+          />
         </button>
         <ColorPicker
           colors={textColors}
@@ -372,7 +433,10 @@ export default function Toolbar({ editor }) {
           title="Highlight color"
         >
           <HighlighterCircle size={16} weight="bold" />
-          <div className="w-4 h-1 rounded-sm mt-0.5" style={{ backgroundColor: currentHighlightColor }} />
+          <div
+            className="w-4 h-1 rounded-sm mt-0.5"
+            style={{ backgroundColor: currentHighlightColor }}
+          />
         </button>
         {showHighlightDropdown && (
           <div className="absolute top-full left-0 mt-1 bg-white border border-slate-200 rounded-lg shadow-lg z-50 p-3 min-w-[200px]">
@@ -386,7 +450,11 @@ export default function Toolbar({ editor }) {
                     setShowHighlightDropdown(false);
                   }}
                   onMouseDown={(e) => e.preventDefault()}
-                  className={`w-6 h-6 rounded border ${currentHighlightColor === color ? "ring-2 ring-indigo-500" : "border-slate-200"} hover:scale-110 transition-transform`}
+                  className={`w-6 h-6 rounded border ${
+                    currentHighlightColor === color
+                      ? "ring-2 ring-indigo-500"
+                      : "border-slate-200"
+                  } hover:scale-110 transition-transform`}
                   style={{ backgroundColor: color }}
                   title={color}
                 />
@@ -443,7 +511,9 @@ export default function Toolbar({ editor }) {
           }}
           onMouseDown={(e) => e.preventDefault()}
           className={`w-full px-3 py-2 flex items-center gap-2 hover:bg-slate-100 first:rounded-t-lg ${
-            editor.isActive({ textAlign: "left" }) ? "bg-indigo-50 text-indigo-600" : ""
+            editor.isActive({ textAlign: "left" })
+              ? "bg-indigo-50 text-indigo-600"
+              : ""
           }`}
         >
           <TextAlignLeft size={16} /> Left
@@ -455,7 +525,9 @@ export default function Toolbar({ editor }) {
           }}
           onMouseDown={(e) => e.preventDefault()}
           className={`w-full px-3 py-2 flex items-center gap-2 hover:bg-slate-100 ${
-            editor.isActive({ textAlign: "center" }) ? "bg-indigo-50 text-indigo-600" : ""
+            editor.isActive({ textAlign: "center" })
+              ? "bg-indigo-50 text-indigo-600"
+              : ""
           }`}
         >
           <TextAlignCenter size={16} /> Center
@@ -467,7 +539,9 @@ export default function Toolbar({ editor }) {
           }}
           onMouseDown={(e) => e.preventDefault()}
           className={`w-full px-3 py-2 flex items-center gap-2 hover:bg-slate-100 ${
-            editor.isActive({ textAlign: "right" }) ? "bg-indigo-50 text-indigo-600" : ""
+            editor.isActive({ textAlign: "right" })
+              ? "bg-indigo-50 text-indigo-600"
+              : ""
           }`}
         >
           <TextAlignRight size={16} /> Right
@@ -479,14 +553,14 @@ export default function Toolbar({ editor }) {
           }}
           onMouseDown={(e) => e.preventDefault()}
           className={`w-full px-3 py-2 flex items-center gap-2 hover:bg-slate-100 last:rounded-b-lg ${
-            editor.isActive({ textAlign: "justify" }) ? "bg-indigo-50 text-indigo-600" : ""
+            editor.isActive({ textAlign: "justify" })
+              ? "bg-indigo-50 text-indigo-600"
+              : ""
           }`}
         >
           <TextAlignJustify size={16} /> Justify
         </button>
       </Dropdown>
-
-   
 
       <Divider />
 
@@ -517,8 +591,6 @@ export default function Toolbar({ editor }) {
 
       <Divider />
 
-     
-
       {/* Extras */}
       <ToolButton
         onClick={() => editor.chain().focus().toggleBlockquote().run()}
@@ -538,12 +610,11 @@ export default function Toolbar({ editor }) {
 
       <Divider />
 
-     
-      <Divider />
-
       {/* Clear Formatting */}
       <ToolButton
-        onClick={() => editor.chain().focus().clearNodes().unsetAllMarks().run()}
+        onClick={() =>
+          editor.chain().focus().clearNodes().unsetAllMarks().run()
+        }
         title="Clear formatting"
       >
         <Eraser size={16} weight="bold" />

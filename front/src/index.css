@@ -144,3 +144,113 @@
 .tiptap ul[data-type="taskList"] li > label input[type="checkbox"] {
   cursor: pointer;
 }
+
+/* Spell checker error styling */
+.spell-check-error {
+  text-decoration: underline !important;
+  text-decoration-color: red !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 2px !important;
+}
+
+/* Print Styles - Only print editor content */
+@media print {
+  /* Hide everything by default */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Reset body styles */
+  body {
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Show only the editor content */
+  .tiptap,
+  .tiptap * {
+    visibility: visible !important;
+  }
+
+  /* Position editor content at top left */
+  .tiptap {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 20mm !important;
+    margin: 0 !important;
+    font-size: 12pt !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Ensure proper page breaks */
+  .tiptap h1,
+  .tiptap h2,
+  .tiptap h3 {
+    page-break-after: avoid;
+  }
+
+  .tiptap p,
+  .tiptap li {
+    page-break-inside: avoid;
+  }
+
+  /* Reset colors for print */
+  .tiptap,
+  .tiptap * {
+    color: black !important;
+    background: transparent !important;
+  }
+
+  .tiptap blockquote {
+    border-color: #333 !important;
+  }
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(-10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.3s ease-out;
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-5%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}

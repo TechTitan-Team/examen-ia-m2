@@ -391,7 +391,7 @@ curl -X POST http://localhost:5002/analyze \
   }'
 
 # Autocomplétion seule
-curl -X POST http://localhost:5002/autocompletion/predict \
+curl -X POST http://localhost:5002/autocompletion/complete \
   -H "Content-Type: application/json" \
   -d '{"context": "Ny fiainana dia", "num_predictions": 5}'
 
@@ -400,63 +400,6 @@ curl -X POST http://localhost:5002/ner/recognize \
   -H "Content-Type: application/json" \
   -d '{"text": "Andrianampoinimerina dia mpanjaka tany Antananarivo"}'
 ```
-
----
-
-## 🏗️ Structure du projet
-
-```
-nlp-services/
-├── app.py                      # Serveur Flask principal
-├── requirements.txt            # Dépendances Python
-├── test_api.py                # Script de test
-├── Dockerfile                 # Configuration Docker
-├── README.md                  # Cette documentation
-├── .gitignore
-│
-├── models/                    # Modèles Python
-│   ├── ngram_model.py        # Modèle N-grams
-│   └── ner_model.py          # Modèle NER
-│
-└── data/                      # Données
-    ├── corpus/
-    │   └── corpus_malagasy.txt  # Corpus d'entraînement
-    └── entities/
-        ├── cities.json          # Villes (20 entités)
-        ├── persons.json         # Personnalités (19 entités)
-        ├── organizations.json   # Organisations (20 entités)
-        ├── locations.json       # Lieux (22 entités)
-        └── events.json          # Événements (12 entités)
-```
-
----
-
-## 🧪 Tests
-
-Exécuter les tests complets :
-
-```bash
-python test_api.py
-```
-
-Tests inclus :
-- ✅ Health check global
-- ✅ Page d'accueil
-- ✅ Autocomplétion (predict, complete, stats)
-- ✅ NER (recognize, extract, annotate, stats)
-
----
-
-## 🎯 Types d'entités NER
-
-| Type | Description | Exemples |
-|------|-------------|----------|
-| `PERSON` | Personnalités, noms de personnes | Andrianampoinimerina, Ranavalona I |
-| `CITY` | Villes et communes | Antananarivo, Antsirabe, Toamasina |
-| `ORG` | Organisations, institutions | Université d'Antananarivo, FJKM |
-| `LOC` | Lieux, régions | Analamanga, Vakinankaratra, Imerina |
-| `DATE` | Dates et périodes | 26 Juin, 1960 |
-| `EVENT` | Événements historiques | Fête de l'Indépendance, Famadihana |
 
 ---
 

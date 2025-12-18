@@ -7,6 +7,10 @@ export default function ChatSidebar({
   onClose,
   chatContext = null,
   onClearContext,
+  selectedText = null,
+  suggestions = null,
+  onReplaceText,
+  onClearSelection,
 }) {
   const { http, iaHttp } = useHttps()
   const [message, setMessage] = useState("");
@@ -155,6 +159,8 @@ export default function ChatSidebar({
   };
 
   const showInput = selectedAction && (selectedAction !== "handika" || translationDirection);
+  const showSuggestions = selectedText && suggestions;
+  const showChat = !showSuggestions;
 
   if (!isOpen) return null;
 
@@ -191,7 +197,63 @@ export default function ChatSidebar({
 
       {/* Content */}
       <div className="flex-1 overflow-auto p-6">
-        {messages.length === 0 ? (
+        {showSuggestions ? (
+          <div className="space-y-4">
+            {/* Selected Text Display */}
+            <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-4 mb-4">
+              <p className="text-xs font-medium text-indigo-600 mb-2">Teny voafidy:</p>
+              <p className="text-sm text-slate-700 font-medium">{selectedText.text}</p>
+            </div>
+
+            {/* Suggestions List */}
+            {suggestions.corrections && suggestions.corrections.length > 0 ? (
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-slate-800">Soso-kevitra fanitsiana:</h3>
+                {suggestions.corrections.map((correction, idx) => (
+                  <div key={idx} className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
+                    <h4 className="text-sm font-semibold text-slate-700 mb-3">
+                      Teny diso: <span className="text-red-600">{correction.word}</span>
+                    </h4>
+                    <div className="space-y-2">
+                      <p className="text-xs font-medium text-slate-500 mb-2">Soso-kevitra:</p>
+                      <div className="flex flex-wrap gap-2">
+                        {correction.correction && correction.correction.length > 0 ? (
+                          correction.correction.map((suggestion, sIdx) => (
+                            <button
+                              key={sIdx}
+                              onClick={() => {
+                                onReplaceText?.(correction.word, suggestion.word);
+                              }}
+                              className="px-3 py-1.5 bg-gradient-to-r from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100 border border-indigo-200 hover:border-indigo-300 rounded-lg text-sm font-medium text-indigo-700 hover:text-indigo-800 transition-all shadow-sm hover:shadow-md"
+                            >
+                              {suggestion.word}
+                            </button>
+                          ))
+                        ) : (
+                          <p className="text-sm text-slate-500">Tsy misy soso-kevitra</p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
+                <p className="text-sm font-medium text-green-700">Tsy misy tsipelina diso</p>
+              </div>
+            )}
+
+            {/* Close button */}
+            <button
+              onClick={() => {
+                onClearSelection?.();
+              }}
+              className="w-full mt-4 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition-colors text-sm font-medium"
+            >
+              Hiverina amin'ny chat
+            </button>
+          </div>
+        ) : messages.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full">
             {/* Mascot */}
             <div className="w-32 h-32 mb-6 rounded-2xl bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center shadow-lg">
@@ -272,8 +334,8 @@ export default function ChatSidebar({
         )}
       </div>
 
-      {/* Chat Context */}
-      {chatContext && (
+      {/* Chat Context - Only show when not showing suggestions */}
+      {chatContext && showChat && (
         <div className="px-4 pb-2">
           <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-3 text-sm text-slate-700 relative">
             <p className="text-xs font-medium text-indigo-600 mb-1">Soratra voafidy:</p>
@@ -288,8 +350,8 @@ export default function ChatSidebar({
         </div>
       )}
 
-      {/* Input - Only show when action is selected and ready */}
-      {showInput && (
+      {/* Input - Only show when action is selected and ready, and not showing suggestions */}
+      {showInput && showChat && (
         <div className="p-4 border-t border-slate-200 animate-slideUp">
           {/* Back button and label */}
           <div className="mb-3 flex items-center justify-between">

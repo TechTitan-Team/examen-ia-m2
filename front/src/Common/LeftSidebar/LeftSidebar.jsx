@@ -1,8 +1,10 @@
 import { useRef } from "react";
-import { ZoomIn, ZoomOut, Printer, FileUp, Undo2, Redo2, Sparkles, Download } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { ZoomIn, ZoomOut, Printer, FileUp, Undo2, Redo2, Sparkles, LogOut } from "lucide-react";
 
 export default function LeftSidebar({ editor, onOpenChat, onZoomIn, onZoomOut, zoom }) {
   const fileInputRef = useRef(null);
+  const navigate = useNavigate();
 
   // Import DOCX functionality
   const handleImportDocx = () => {
@@ -135,6 +137,15 @@ export default function LeftSidebar({ editor, onOpenChat, onZoomIn, onZoomOut, z
     }
   };
 
+  // Logout functionality
+  const handleLogout = () => {
+    // Clear both localStorage and sessionStorage
+    localStorage.removeItem("user");
+    sessionStorage.removeItem("user");
+    // Navigate to login page
+    navigate("/login");
+  };
+
   const tools = [
     { icon: FileUp, label: "Import DOCX", action: handleImportDocx },
     { icon: Printer, label: "Print", action: handlePrint },
@@ -180,7 +191,7 @@ export default function LeftSidebar({ editor, onOpenChat, onZoomIn, onZoomOut, z
         />
       </aside>
 
-      {/* Bottom Actions: AI Agent & Export */}
+      {/* Bottom Actions: AI Agent & Deconnexion */}
       <div className="mt-4 px-1 flex flex-col gap-2">
         <button
           onClick={onOpenChat}
@@ -193,12 +204,13 @@ export default function LeftSidebar({ editor, onOpenChat, onZoomIn, onZoomOut, z
           </span>
         </button>
         <button
-          title="Export"
+          onClick={handleLogout}
+          title="Deconnexion"
           className="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-fuchsia-500 via-purple-500 to-indigo-500 text-white hover:from-fuchsia-600 hover:via-purple-600 hover:to-indigo-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 group relative"
         >
-          <Download size={22} strokeWidth={1.8} />
+          <LogOut size={22} strokeWidth={1.8} />
           <span className="absolute left-full ml-2 px-2 py-1 bg-slate-800 text-white text-xs rounded-md whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-50">
-            Export
+            Deconnexion
           </span>
         </button>
       </div>

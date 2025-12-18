@@ -1,18 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
-import { BubbleMenu } from "@tiptap/react/menus";
 import StarterKit from "@tiptap/starter-kit";
-import {
-  TextB,
-  TextItalic,
-  TextUnderline,
-  TextStrikethrough,
-  HighlighterCircle,
-  Link as LinkIcon,
-  Code,
-  ChatCircleText,
-  CheckCircle,
-} from "@phosphor-icons/react";
 import Placeholder from "@tiptap/extension-placeholder";
 import Underline from "@tiptap/extension-underline";
 import TextAlign from "@tiptap/extension-text-align";
@@ -27,13 +15,7 @@ import TaskList from "@tiptap/extension-task-list";
 import TaskItem from "@tiptap/extension-task-item";
 import { SpellChecker } from "./SpellChecker";
 
-export default function Editor({ onEditorReady, onAddToChat, zoom = 100 }) {
-  const [showSuggestions, setShowSuggestions] = useState(false);
-  const [suggestions, setSuggestions] = useState([]);
-  const [suggestionTitle, setSuggestionTitle] = useState("");
-  const [selectedRange, setSelectedRange] = useState({ from: 0, to: 0 });
-  const [loadingSuggestions, setLoadingSuggestions] = useState(false);
-  const [hasErrors, setHasErrors] = useState(false);
+export default function Editor({ onEditorReady, zoom = 100, onTextSelection }) {
 
   const editor = useEditor({
     extensions: [
@@ -103,23 +85,39 @@ export default function Editor({ onEditorReady, onAddToChat, zoom = 100 }) {
     }
   }, [editor, onEditorReady]);
 
-  const handleCorrection = () => {
-    setShowSuggestions(true);
-  };
+  useEffect(() => {
+    if (!editor || !onTextSelection) return;
 
-  const handleSuggestionClick = (suggestion) => {
-    if (!editor) return;
-    const { from, to } = selectedRange;
-    editor
-      .chain()
-      .focus()
-      .setTextSelection({ from, to })
-      .deleteSelection()
-      .insertContent(suggestion)
-      .run();
-    setShowSuggestions(false);
-    setSelectedRange({ from: 0, to: 0 });
-  };
+    const handleSelectionUpdate = () => {
+      const { from, to } = editor.state.selection;
+      const selectedText = editor.state.doc.textBetween(from, to, " ");
+      
+      if (selectedText.trim()) {
+        onTextSelection({
+          text: selectedText.trim(),
+          from,
+          to,
+        });
+      } else {
+        onTextSelection(null);
+      }
+    };
+
+    editor.on("selectionUpdate", handleSelectionUpdate);
+    editor.on("blur", () => {
+      setTimeout(() => {
+        const { from, to } = editor.state.selection;
+        const selectedText = editor.state.doc.textBetween(from, to, " ");
+        if (!selectedText.trim()) {
+          onTextSelection(null);
+        }
+      }, 100);
+    });
+
+    return () => {
+      editor.off("selectionUpdate", handleSelectionUpdate);
+    };
+  }, [editor, onTextSelection]);
 
   const scale = zoom / 100;
   const editorWidth = 896 * scale;
@@ -139,179 +137,6 @@ export default function Editor({ onEditorReady, onAddToChat, zoom = 100 }) {
           }}
         >
           <div className="p-8 md:p-12">
-            {editor && (
-              <BubbleMenu
-                editor={editor}
-                shouldShow={({ from, to }) => from !== to}
-                tippyOptions={{ duration: 100 }}
-                className="flex items-center gap-1 bg-white text-slate-700 rounded-lg shadow-lg px-2 py-1.5 border border-slate-200"
-              >
-                <button
-                  onClick={() => editor.chain().focus().toggleBold().run()}
-                  className={`p-1.5 rounded hover:bg-slate-100 transition-colors ${
-                    editor.isActive("bold")
-                      ? "bg-slate-100 text-indigo-600"
-                      : ""
-                  }`}
-                  title="Matavy (Ctrl+B)"
-                >
-                  <TextB size={16} weight="bold" />
-                </button>
-                <button
-                  onClick={() => editor.chain().focus().toggleItalic().run()}
-                  className={`p-1.5 rounded hover:bg-slate-100 transition-colors ${
-                    editor.isActive("italic")
-                      ? "bg-slate-100 text-indigo-600"
-                      : ""
-                  }`}
-                  title="Miolakolaka (Ctrl+I)"
-                >
-                  <TextItalic size={16} weight="bold" />
-                </button>
-                <button
-                  onClick={() => editor.chain().focus().toggleUnderline().run()}
-                  className={`p-1.5 rounded hover:bg-slate-100 transition-colors ${
-                    editor.isActive("underline")
-                      ? "bg-slate-100 text-indigo-600"
-                      : ""
-                  }`}
-                  title="Misy tsipika eo ambaniny (Ctrl+U)"
-                >
-                  <TextUnderline size={16} weight="bold" />
-                </button>
-                <button
-                  onClick={() => editor.chain().focus().toggleStrike().run()}
-                  className={`p-1.5 rounded hover:bg-slate-100 transition-colors ${
-                    editor.isActive("strike")
-                      ? "bg-slate-100 text-indigo-600"
-                      : ""
-                  }`}
-                  title="Misy tsipika mamaky"
-                >
-                  <TextStrikethrough size={16} weight="bold" />
-                </button>
-                <div className="w-px h-5 bg-slate-200 mx-1" />
-                <button
-                  onClick={() => editor.chain().focus().toggleHighlight().run()}
-                  className={`p-1.5 rounded hover:bg-slate-100 transition-colors ${
-                    editor.isActive("highlight")
-                      ? "bg-yellow-100 text-yellow-700"
-                      : ""
-                  }`}
-                  title="Mamantatra"
-                >
-                  <HighlighterCircle size={16} weight="bold" />
-                </button>
-                <button
-                  onClick={() => {
-                    const previousUrl = editor.getAttributes("link").href;
-                    const url = window.prompt("Rohy", previousUrl);
-                    if (url === null) return;
-                    if (url === "") {
-                      editor
-                        .chain()
-                        .focus()
-                        .extendMarkRange("link")
-                        .unsetLink()
-                        .run();
-                      return;
-                    }
-                    editor
-                      .chain()
-                      .focus()
-                      .extendMarkRange("link")
-                      .setLink({ href: url })
-                      .run();
-                  }}
-                  className={`p-1.5 rounded hover:bg-slate-100 transition-colors ${
-                    editor.isActive("link")
-                      ? "bg-slate-100 text-indigo-600"
-                      : ""
-                  }`}
-                  title="Ampio rohy"
-                >
-                  <LinkIcon size={16} weight="bold" />
-                </button>
-                <div className="w-px h-5 bg-slate-200 mx-1" />
-                <button
-                  onClick={() => editor.chain().focus().toggleCode().run()}
-                  className={`p-1.5 rounded hover:bg-slate-100 transition-colors ${
-                    editor.isActive("code")
-                      ? "bg-slate-100 text-indigo-600"
-                      : ""
-                  }`}
-                  title="Kaody anaty lahatsoratra"
-                >
-                  <Code size={16} weight="bold" />
-                </button>
-                <>
-                  <div className="w-px h-5 bg-slate-200 mx-1" />
-                  <button
-                    onClick={handleCorrection}
-                    className="flex items-center gap-1.5 px-2 py-1.5 rounded hover:bg-indigo-50 text-indigo-600 transition-colors text-sm font-medium"
-                    title="Fanovana AI"
-                  >
-                    <CheckCircle size={16} weight="bold" />
-                    Fanovana AI
-                  </button>
-                </>
-              </BubbleMenu>
-            )}
-            {showSuggestions && (
-              <BubbleMenu
-                editor={editor}
-                tippyOptions={{
-                  duration: 100,
-                  placement: "bottom",
-                }}
-                className="bg-white text-slate-700 rounded-lg shadow-lg border border-slate-200 p-3 min-w-[200px] z-50"
-              >
-                {loadingSuggestions ? (
-                  <div className="py-4 text-center text-sm text-slate-500">
-                    Mampiditra tolo-kevitra...
-                  </div>
-                ) : (
-                  <div className="space-y-2">
-                    <h3 className="font-semibold text-sm text-slate-800 mb-2">
-                      {suggestionTitle}
-                    </h3>
-                    {suggestions.length > 0 ? (
-                      suggestions.map((suggestionGroup, index) => (
-                        <div key={index}>
-                          <div className="text-xs font-medium text-slate-500 mb-1">
-                            {suggestionGroup.title}
-                          </div>
-                          <div className="space-y-1">
-                            {suggestionGroup.values.map((value, idx) => (
-                              <button
-                                key={idx}
-                                onClick={() => handleSuggestionClick(value)}
-                                className="w-full text-left px-3 py-2 rounded hover:bg-indigo-50 text-sm text-slate-700 hover:text-indigo-600 transition-colors"
-                              >
-                                {value}
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      ))
-                    ) : (
-                      <div className="py-2 text-sm text-slate-500">
-                        Tsy misy tolo-kevitra azo
-                      </div>
-                    )}
-                    <button
-                      onClick={() => {
-                        setShowSuggestions(false);
-                        setLoadingSuggestions(false);
-                      }}
-                      className="w-full mt-2 px-3 py-2 rounded hover:bg-slate-100 text-sm text-slate-500 transition-colors"
-                    >
-                      Ajanona
-                    </button>
-                  </div>
-                )}
-              </BubbleMenu>
-            )}
             <EditorContent editor={editor} />
           </div>
         </div>

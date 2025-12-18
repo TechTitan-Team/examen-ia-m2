@@ -2,6 +2,7 @@ import { Response, Request } from "express"
 import express from "express"
 import cors from "cors"
 import correctorRoute from './routes/corrector'
+import userRouter from "./routes/user.router"
 
 const app = express()
 
@@ -14,5 +15,6 @@ app.get('/api', (req:Request, res:Response) => {
 })
 
 app.use('/api/corrector', correctorRoute)
+app.use('/api/user', userRouter)
 
 app.listen(9002, () => console.log("Api listen on port 9002"))

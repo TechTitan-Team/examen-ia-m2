@@ -4,31 +4,32 @@ import path from 'path'
 
 const prisma = new PrismaClient()
 
-const french = async () => {
-  // French Dictionary Data
-  let french = fs.readFileSync(path.resolve(__dirname, 'mot_francais.json'), 'utf8')
-  let frenchDictionary = JSON.parse(french)
+const mg = async () => {
+  // mg Dictionary Data
+  let mg = fs.readFileSync(path.resolve(__dirname, 'teny_malagasy_clean.json'), 'utf8')
+  let mgDictionary = JSON.parse(mg)
 
-  for await (let word of frenchDictionary) {
+  for await (let word of mgDictionary) {
+    let w = word.word
     let data = {
-      word,
-      length: word.length
+      word: w,
+      length: w.length
     }
 
-    let res = await prisma.frenchWords.upsert({
-      where: { word: word },
+    let res = await prisma.mgWords.upsert({
+      where: { word: w },
       update: {},
       create: data,
     })
-    console.log(`French dictionary creation...`)
+    console.log(`mg dictionary creation...`)
   }
-  console.log("French dictionary created")
+  console.log("mg dictionary created")
 }
 
 
 async function main() {
   console.log(`==> Creation of all dictionary, please wait for a minute.`)
-  await french()
+  await mg()
 }
 
 main()

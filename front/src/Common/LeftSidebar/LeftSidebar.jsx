@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { ZoomIn, ZoomOut, Printer, FileUp, Undo2, Redo2, Sparkles, Download } from "lucide-react";
+import logo from "../../assets/logo_ispm.png"; // <-- ton image locale
 
 export default function LeftSidebar({ editor, onOpenChat, onZoomIn, onZoomOut, zoom }) {
   const fileInputRef = useRef(null);
@@ -146,12 +147,11 @@ export default function LeftSidebar({ editor, onOpenChat, onZoomIn, onZoomOut, z
 
   return (
     <div className="flex flex-col items-center h-full py-4 pl-3">
-      {/* Logo */}
       <div className="px-2 mb-4">
-        <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-xl flex items-center justify-center shadow-lg">
-          <span className="text-white font-bold text-lg">G</span>
-        </div>
-      </div>
+  <div className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center shadow-lg">
+    <img src={logo} alt="Logo" className="w-full h-full object-cover" />
+  </div>
+</div>
 
       {/* Tools - Centered */}
       <aside className="bg-white rounded-2xl shadow-lg border border-slate-200/60 py-3 px-2 flex flex-col gap-1 my-auto">

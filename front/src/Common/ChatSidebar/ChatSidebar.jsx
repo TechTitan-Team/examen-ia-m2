@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { X, RefreshCw, Sparkles, Send, BookOpen, Lightbulb, Globe, ArrowLeft, BookPlus } from "lucide-react";
+import { X, RefreshCw, Sparkles, Send, BookOpen, Lightbulb, Globe, ArrowLeft, BookPlus, Pencil } from "lucide-react";
 import useHttps from "../../hooks/useHttps";
+import sparkImg from "../../assets/logo.jpeg";
 
 export default function ChatSidebar({
   isOpen,
@@ -17,9 +18,9 @@ export default function ChatSidebar({
   const quickActions = [
     { id: "ohabolana", icon: BookOpen, label: "Hijery ohabolana" },
     { id: "hazavaina", icon: Lightbulb, label: "Hanazava teny" },
-    // { id: "handika", icon: Globe, label: "Handika teny" },
+    { id: "handika", icon: Globe, label: "Handika teny" },
     { id: "baiboly", icon: BookPlus, label: "Hanohy teny avy ao amin'ny Baiboly" },
-    { id: "tsipelina", icon: BookPlus, label: "Hanitsy tsipelina" },
+    { id: "tsipelina", icon: Pencil, label: "Hanitsy tsipelina" },
   ];
 
   const getPlaceholder = () => {
@@ -30,10 +31,10 @@ export default function ChatSidebar({
         return "Ohabolana momban'ny inona?";
       case "hazavaina":
         return "Inona ny teny tianao hazavaina?";
-      // case "handika":
-      //   return translationDirection
-      //     ? "Hampidiro ny teny tianao hadika"
-      //     : "";
+      case "handika":
+        return translationDirection
+          ? "Hampidiro ny teny tianao hadika"
+          : "";
       case "baiboly":
         return "Hanohy teny avy any anaty Baiboly?";
       case "tsipelina":
@@ -63,12 +64,7 @@ export default function ChatSidebar({
 
   const handleSend = async () => {
     if (!message.trim()) return;
-
     let fullMessage = message;
-    if (selectedAction === "handika" && translationDirection) {
-      fullMessage = `[${translationDirection}] ${message}`;
-    }
-
 
     setMessages([...messages, {
       role: "user",
@@ -76,7 +72,29 @@ export default function ChatSidebar({
       action: selectedAction
     }]);
     setMessage("");
-    if (selectedAction === "hazavaina") {
+
+
+
+
+    if (selectedAction === "handika" && translationDirection) {
+      try {
+        const res = await http.post(`/features/translate`, {
+          texte: fullMessage,
+          langue: translationDirection
+        })
+        setMessages((prev) => [
+          ...prev,
+          { role: "assistant", content: `${translationDirection === "fr" ? "🇫🇷 " : "🇬🇧 "}` + res.data },
+        ]);
+      } catch (err) {
+        setTimeout(() => {
+          setMessages((prev) => [
+            ...prev,
+            { role: "assistant", content: "Tsy mazava ny fangatahano, mba avereno ampidirina azafady." },
+          ]);
+        }, 500);
+      }
+    } else if (selectedAction === "hazavaina") {
       try {
         const res = await http.get(`/features/getExplain/${fullMessage.toLowerCase()}`)
         setMessages((prev) => [
@@ -130,12 +148,12 @@ export default function ChatSidebar({
           text: fullMessage
         })
         const message = res.data.corrections
-  .map(correction =>
-    `- Teny diso: ${correction.word} => ${correction.correction
-      .map(v => v.word)
-      .join(', ')}<br/>`
-  )
-  .join('');
+          .map(correction =>
+            `- Teny diso: ${correction.word} => ${correction.correction
+              .map(v => v.word)
+              .join(', ')}<br/>`
+          )
+          .join('');
         setMessages((prev) => [
           ...prev,
           {
@@ -163,8 +181,8 @@ export default function ChatSidebar({
       {/* Header */}
       <div className="p-4 border-b border-slate-200 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
-            <Sparkles size={18} className="text-white" />
+          <div className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center">
+            <img src={sparkImg} alt="Spark" className="w-full h-full object-cover" />
           </div>
           <h2 className="font-semibold text-slate-800">Voambolana.AI</h2>
         </div>
@@ -236,14 +254,14 @@ export default function ChatSidebar({
                   Havadika:
                 </p>
                 <button
-                  onClick={() => setTranslationDirection("Anglisy")}
+                  onClick={() => setTranslationDirection("en")}
                   className="w-full flex items-center justify-center gap-3 p-4 text-base font-medium bg-white text-slate-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 hover:text-blue-600 border-2 border-slate-200 hover:border-blue-300 rounded-xl transition-all shadow-sm hover:shadow-md"
                 >
                   <span className="text-3xl">🇬🇧</span>
                   <span>Anglisy</span>
                 </button>
                 <button
-                  onClick={() => setTranslationDirection("Frantsay")}
+                  onClick={() => setTranslationDirection("fr")}
                   className="w-full flex items-center justify-center gap-3 p-4 text-base font-medium bg-white text-slate-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 hover:text-blue-600 border-2 border-slate-200 hover:border-blue-300 rounded-xl transition-all shadow-sm hover:shadow-md"
                 >
                   <span className="text-3xl">🇫🇷</span>
@@ -264,7 +282,7 @@ export default function ChatSidebar({
                     ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-br-md shadow-md"
                     : "bg-slate-100 text-slate-700 rounded-bl-md"
                     }`}
-                    dangerouslySetInnerHTML={{ __html: msg.content }}
+                  dangerouslySetInnerHTML={{ __html: msg.content }}
                 />
               </div>
             ))}

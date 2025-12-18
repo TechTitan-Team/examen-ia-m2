@@ -2,7 +2,7 @@ import { Response, Request } from "express"
 import fs from 'fs/promises';
 import path from 'path';
 import appRoot from 'app-root-path';
-
+import translate from 'google-translate-api-x'
 const featuresController = {
     getExplain: async(req: Request, res: Response) => {
         const { word } = req.params
@@ -42,6 +42,23 @@ const featuresController = {
         } catch (error) {
             res.status(500).send("Error")
         }
+    },
+    translate: async(req: Request, res: Response) => {
+      const {texte, langue} = req.body;
+      try {
+        if (!['fr', 'en'].includes(langue)) {
+          throw new Error('Langue doit être "fr" ou "en"');
+        }
+        
+        const result: any = await translate(texte, {
+          from: 'mg',
+          to: langue
+        });
+        res.status(200).send(result.text)
+      } catch (error: any) {
+        console.error('Erreur:', error.message);
+        res.status(500).send("Error")
+      }
     }
 }
 

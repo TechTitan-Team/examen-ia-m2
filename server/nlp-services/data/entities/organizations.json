@@ -1,0 +1,123 @@
+[
+  {
+    "name": "Assemblée Nationale de Madagascar",
+    "variations": ["Assemblée Nationale", "Antenimierampirenena"],
+    "type": "institution politique",
+    "description": "Parlement de Madagascar"
+  },
+  {
+    "name": "Université d'Antananarivo",
+    "variations": ["UA", "Université de Tana", "Universitén'Antananarivo"],
+    "type": "université",
+    "description": "Principale université de Madagascar"
+  },
+  {
+    "name": "Air Madagascar",
+    "variations": ["Air Mad", "Compagnie Air Madagascar"],
+    "type": "compagnie aérienne",
+    "description": "Compagnie aérienne nationale"
+  },
+  {
+    "name": "Jirama",
+    "variations": ["Jiro sy Rano Malagasy"],
+    "type": "service public",
+    "description": "Société nationale d'eau et d'électricité"
+  },
+  {
+    "name": "Banque Centrale de Madagascar",
+    "variations": ["BCM", "Banky Foiben'i Madagasikara"],
+    "type": "institution financière",
+    "description": "Banque centrale du pays"
+  },
+  {
+    "name": "Église de Jésus-Christ à Madagascar",
+    "variations": ["FJKM", "Fiangonan'i Jesoa Kristy eto Madagasikara"],
+    "type": "institution religieuse",
+    "description": "Principale église protestante"
+  },
+  {
+    "name": "Conférence Épiscopale de Madagascar",
+    "variations": ["CEM"],
+    "type": "institution religieuse",
+    "description": "Église catholique de Madagascar"
+  },
+  {
+    "name": "Académie Malgache",
+    "variations": ["Akademia Malagasy"],
+    "type": "institution culturelle",
+    "description": "Institution de recherche et de préservation de la culture"
+  },
+  {
+    "name": "Office National pour l'Environnement",
+    "variations": ["ONE"],
+    "type": "agence gouvernementale",
+    "description": "Organisme de protection de l'environnement"
+  },
+  {
+    "name": "Madagascar National Parks",
+    "variations": ["MNP", "Parcs Nationaux de Madagascar"],
+    "type": "organisme de conservation",
+    "description": "Gestion des parcs nationaux"
+  },
+  {
+    "name": "Haute Cour Constitutionnelle",
+    "variations": ["HCC"],
+    "type": "institution judiciaire",
+    "description": "Plus haute juridiction constitutionnelle"
+  },
+  {
+    "name": "Radio Télévision Analamanga",
+    "variations": ["RTA"],
+    "type": "média",
+    "description": "Chaîne de télévision malgache"
+  },
+  {
+    "name": "Madagascar Broadcasting System",
+    "variations": ["MBS", "MBS TV"],
+    "type": "média",
+    "description": "Groupe de médias malgache"
+  },
+  {
+    "name": "Telma",
+    "variations": ["Telma Madagascar"],
+    "type": "opérateur télécom",
+    "description": "Opérateur de télécommunications"
+  },
+  {
+    "name": "Orange Madagascar",
+    "variations": ["Orange", "Orange Malagasy"],
+    "type": "opérateur télécom",
+    "description": "Opérateur de télécommunications"
+  },
+  {
+    "name": "Airtel Madagascar",
+    "variations": ["Airtel"],
+    "type": "opérateur télécom",
+    "description": "Opérateur de télécommunications"
+  },
+  {
+    "name": "Tiko",
+    "variations": ["Groupe Tiko"],
+    "type": "entreprise agroalimentaire",
+    "description": "Entreprise de produits laitiers"
+  },
+  {
+    "name": "STAR",
+    "variations": ["Brasseries STAR"],
+    "type": "entreprise",
+    "description": "Brasserie malgache"
+  },
+  {
+    "name": "Jovenna",
+    "variations": [],
+    "type": "entreprise",
+    "description": "Entreprise de boissons"
+  },
+  {
+    "name": "Secren",
+    "variations": [],
+    "type": "entreprise",
+    "description": "Entreprise de ciment"
+  }
+]
+

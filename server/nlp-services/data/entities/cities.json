@@ -1,0 +1,143 @@
+[
+  {
+    "name": "Antananarivo",
+    "variations": ["Tana", "Tananarive", "Antanànarìvo"],
+    "region": "Analamanga",
+    "type": "capitale",
+    "population": 1600000
+  },
+  {
+    "name": "Antsirabe",
+    "variations": ["Antsirabe I", "Antsirabe II"],
+    "region": "Vakinankaratra",
+    "type": "ville",
+    "population": 250000
+  },
+  {
+    "name": "Toamasina",
+    "variations": ["Tamatave"],
+    "region": "Atsinanana",
+    "type": "ville portuaire",
+    "population": 300000
+  },
+  {
+    "name": "Mahajanga",
+    "variations": ["Majunga"],
+    "region": "Boeny",
+    "type": "ville portuaire",
+    "population": 220000
+  },
+  {
+    "name": "Fianarantsoa",
+    "variations": ["Fianar"],
+    "region": "Haute Matsiatra",
+    "type": "ville",
+    "population": 190000
+  },
+  {
+    "name": "Toliara",
+    "variations": ["Tuléar", "Toliary"],
+    "region": "Atsimo-Andrefana",
+    "type": "ville",
+    "population": 156000
+  },
+  {
+    "name": "Antsiranana",
+    "variations": ["Diego-Suarez", "Diego"],
+    "region": "Diana",
+    "type": "ville portuaire",
+    "population": 115000
+  },
+  {
+    "name": "Morondava",
+    "variations": ["Morondava"],
+    "region": "Menabe",
+    "type": "ville côtière",
+    "population": 50000
+  },
+  {
+    "name": "Ambositra",
+    "variations": [],
+    "region": "Amoron'i Mania",
+    "type": "ville artisanale",
+    "population": 30000
+  },
+  {
+    "name": "Manakara",
+    "variations": [],
+    "region": "Vatovavy-Fitovinany",
+    "type": "ville côtière",
+    "population": 40000
+  },
+  {
+    "name": "Nosy Be",
+    "variations": ["Nossi-Bé", "Ile de Nosy Be"],
+    "region": "Diana",
+    "type": "ile touristique",
+    "population": 110000
+  },
+  {
+    "name": "Ambatolampy",
+    "variations": [],
+    "region": "Vakinankaratra",
+    "type": "ville",
+    "population": 25000
+  },
+  {
+    "name": "Antsohihy",
+    "variations": [],
+    "region": "Sofia",
+    "type": "ville",
+    "population": 30000
+  },
+  {
+    "name": "Sambava",
+    "variations": [],
+    "region": "Sava",
+    "type": "ville",
+    "population": 40000
+  },
+  {
+    "name": "Mananjary",
+    "variations": [],
+    "region": "Vatovavy-Fitovinany",
+    "type": "ville côtière",
+    "population": 35000
+  },
+  {
+    "name": "Ambalavao",
+    "variations": [],
+    "region": "Haute Matsiatra",
+    "type": "ville",
+    "population": 20000
+  },
+  {
+    "name": "Ambanja",
+    "variations": [],
+    "region": "Diana",
+    "type": "ville",
+    "population": 28000
+  },
+  {
+    "name": "Fort Dauphin",
+    "variations": ["Taolagnaro", "Tôlanaro"],
+    "region": "Anosy",
+    "type": "ville",
+    "population": 46000
+  },
+  {
+    "name": "Maroantsetra",
+    "variations": [],
+    "region": "Analanjirofo",
+    "type": "ville",
+    "population": 25000
+  },
+  {
+    "name": "Moramanga",
+    "variations": [],
+    "region": "Alaotra-Mangoro",
+    "type": "ville",
+    "population": 35000
+  }
+]
+

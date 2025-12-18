@@ -1,0 +1,135 @@
+[
+  {
+    "name": "Analamanga",
+    "variations": [],
+    "type": "région",
+    "description": "Région centrale de Madagascar"
+  },
+  {
+    "name": "Vakinankaratra",
+    "variations": [],
+    "type": "région",
+    "description": "Région des Hautes Terres centrales"
+  },
+  {
+    "name": "Atsinanana",
+    "variations": [],
+    "type": "région",
+    "description": "Région de la côte est"
+  },
+  {
+    "name": "Boeny",
+    "variations": [],
+    "type": "région",
+    "description": "Région du nord-ouest"
+  },
+  {
+    "name": "Diana",
+    "variations": [],
+    "type": "région",
+    "description": "Région du nord"
+  },
+  {
+    "name": "Sofia",
+    "variations": [],
+    "type": "région",
+    "description": "Région du nord-ouest"
+  },
+  {
+    "name": "Sava",
+    "variations": [],
+    "type": "région",
+    "description": "Région du nord-est"
+  },
+  {
+    "name": "Menabe",
+    "variations": [],
+    "type": "région",
+    "description": "Région de l'ouest"
+  },
+  {
+    "name": "Haute Matsiatra",
+    "variations": ["Matsiatra Ambony"],
+    "type": "région",
+    "description": "Région des Hautes Terres du sud"
+  },
+  {
+    "name": "Atsimo-Andrefana",
+    "variations": [],
+    "type": "région",
+    "description": "Région du sud-ouest"
+  },
+  {
+    "name": "Hautes Terres",
+    "variations": ["Hauts Plateaux", "Imerina"],
+    "type": "zone géographique",
+    "description": "Plateau central de Madagascar"
+  },
+  {
+    "name": "Allée des Baobabs",
+    "variations": ["Avenue des Baobabs"],
+    "type": "site naturel",
+    "description": "Site touristique emblématique"
+  },
+  {
+    "name": "Parc National de l'Isalo",
+    "variations": ["Isalo", "Massif de l'Isalo"],
+    "type": "parc national",
+    "description": "Parc national du sud"
+  },
+  {
+    "name": "Parc National de Ranomafana",
+    "variations": ["Ranomafana"],
+    "type": "parc national",
+    "description": "Parc national de forêt tropicale"
+  },
+  {
+    "name": "Parc National d'Andasibe",
+    "variations": ["Andasibe-Mantadia", "Andasibe"],
+    "type": "parc national",
+    "description": "Parc national proche d'Antananarivo"
+  },
+  {
+    "name": "Parc National de la Montagne d'Ambre",
+    "variations": ["Montagne d'Ambre"],
+    "type": "parc national",
+    "description": "Parc national du nord"
+  },
+  {
+    "name": "Tsingy de Bemaraha",
+    "variations": ["Tsingy", "Bemaraha"],
+    "type": "site naturel",
+    "description": "Formation géologique unique, patrimoine mondial UNESCO"
+  },
+  {
+    "name": "Canal des Pangalanes",
+    "variations": ["Pangalanes"],
+    "type": "voie d'eau",
+    "description": "Canal naturel et artificiel sur la côte est"
+  },
+  {
+    "name": "Baie de Diego",
+    "variations": ["Baie de Diego-Suarez"],
+    "type": "baie",
+    "description": "Deuxième plus grande baie du monde"
+  },
+  {
+    "name": "Lac Alaotra",
+    "variations": ["Alaotra"],
+    "type": "lac",
+    "description": "Plus grand lac de Madagascar"
+  },
+  {
+    "name": "Rova d'Antananarivo",
+    "variations": ["Rova de Tana", "Palais de la Reine"],
+    "type": "site historique",
+    "description": "Ancien palais royal"
+  },
+  {
+    "name": "Imerina",
+    "variations": [],
+    "type": "région historique",
+    "description": "Royaume historique des Hautes Terres"
+  }
+]
+

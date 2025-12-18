@@ -1,0 +1,81 @@
+[
+  {
+    "name": "Fête de l'Indépendance",
+    "variations": ["26 Juin", "Indépendance de Madagascar"],
+    "date": "26 juin",
+    "type": "fête nationale",
+    "description": "Célébration de l'indépendance obtenue en 1960"
+  },
+  {
+    "name": "Famadihana",
+    "variations": ["Retournement des morts"],
+    "type": "tradition",
+    "description": "Cérémonie traditionnelle de retournement des morts"
+  },
+  {
+    "name": "Alahamady Be",
+    "variations": ["Nouvel An malgache"],
+    "type": "fête traditionnelle",
+    "description": "Nouvel An traditionnel malgache"
+  },
+  {
+    "name": "Santabary",
+    "variations": ["Fête du riz nouveau"],
+    "type": "fête traditionnelle",
+    "description": "Célébration de la première récolte de riz"
+  },
+  {
+    "name": "Insurrection de 1947",
+    "variations": ["Rébellion de 1947", "29 Mars 1947"],
+    "date": "29 mars 1947",
+    "type": "événement historique",
+    "description": "Soulèvement contre la colonisation française"
+  },
+  {
+    "name": "Crise politique de 2009",
+    "variations": ["Crise de 2009"],
+    "date": "2009",
+    "type": "événement politique",
+    "description": "Transition politique controversée"
+  },
+  {
+    "name": "Donia",
+    "variations": ["Festival Donia"],
+    "type": "festival",
+    "description": "Festival culturel de Nosy Be"
+  },
+  {
+    "name": "Madajazzcar",
+    "variations": ["Festival Madajazzcar"],
+    "type": "festival",
+    "description": "Festival international de jazz"
+  },
+  {
+    "name": "Colonisation française",
+    "variations": ["Période coloniale"],
+    "date": "1896-1960",
+    "type": "période historique",
+    "description": "Période de colonisation par la France"
+  },
+  {
+    "name": "Royaume de Madagascar",
+    "variations": ["Royaume merina"],
+    "date": "1540-1897",
+    "type": "période historique",
+    "description": "Période des royaumes malgaches"
+  },
+  {
+    "name": "Mai 1972",
+    "variations": ["Révolution de 1972", "Rotaka 1972"],
+    "date": "mai 1972",
+    "type": "événement politique",
+    "description": "Mouvement étudiant qui renversa Tsiranana"
+  },
+  {
+    "name": "Sambatra",
+    "variations": ["Circoncision traditionnelle"],
+    "type": "cérémonie traditionnelle",
+    "description": "Cérémonie de circoncision collective"
+  }
+]
+

@@ -40,15 +40,15 @@ const getLevenshteinWord = (word: string, qWords: any): Array<levenshteinResult>
     return response
 }
 
-const geTextCorrection =  async (text: string, lang: string) => {
+const geTextCorrection =  async (text: string) => {
     let textArray = text.split(" ")
     let corrections: Array<correctionResult>  = []
 
     for await (let word of textArray) {
         word = word.trim().replace("<br>","")
-        let exist = await model.checkWord(word, lang)
+        let exist = await model.checkWord(word)
         if(!exist || !exist.length) {
-            let qWords = await model.getRelatedWord(word, lang)
+            let qWords = await model.getRelatedWord(word)
             if(qWords) {
                 let arr = {
                     word,
@@ -64,9 +64,9 @@ const geTextCorrection =  async (text: string, lang: string) => {
 
 const controller = {
     getCorrection: async (req: Request, res: Response) => {
-        let { text, lang } = req.body
+        let { text } = req.body
         try {
-            let corrections = await geTextCorrection(text.toLowerCase(), lang)
+            let corrections = await geTextCorrection(text.toLowerCase())
             let incorrect_words: Array<string> = []
             corrections.forEach((correct: correctionResult) => {
                 incorrect_words.push(correct.word)

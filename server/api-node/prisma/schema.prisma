@@ -7,9 +7,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model FrenchWords {
+model MgWords {
   id            Int      @id @default(autoincrement())
   createdAt     DateTime @default(now())
   word          String   @db.VarChar(255) @unique
   length        Int? 
+}model User {
+  id	Int	@id	@default(autoincrement())
+  created_at	DateTime	@default(now())
+	name	String	
+	last_name	String	
+	email	String	@unique	
+	password	String	
+	
 }
+  

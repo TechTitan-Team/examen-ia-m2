@@ -36,7 +36,7 @@ export default function Editor({ onEditorReady, zoom = 100, onTextSelection }) {
         },
       }),
       Placeholder.configure({
-        placeholder: "Manomboka manoratra ny antontan-taratasinao...",
+        placeholder: "Tongasoa eto amin'ny Voambolan-AI...",
       }),
       TextAlign.configure({
         types: ["heading", "paragraph"],
@@ -57,7 +57,6 @@ export default function Editor({ onEditorReady, zoom = 100, onTextSelection }) {
       }),
     ],
     content: `
-      <h1>Tongasoa eto amin'ny Voambolan-AI</h1>
     `,
     editorProps: {
       attributes: {

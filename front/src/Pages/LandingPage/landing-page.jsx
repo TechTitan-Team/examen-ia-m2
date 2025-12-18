@@ -58,7 +58,7 @@ export default function Landing() {
             <button onClick={() => navigate("/login")} className="px-8 py-4 bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 text-white font-semibold rounded-xl transition-all transform hover:scale-105 hover:shadow-2xl animate-pulse-glow hover-wiggle">
               Andramo Izao 🚀
             </button>
-            <button onClick={() => navigate("/login")} className="px-8 py-4 border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 bg-white/50 backdrop-blur font-semibold rounded-xl transition-all transform hover:scale-105 hover:shadow-xl hover-wiggle">
+            <button onClick={() => window.open("https://www.youtube.com/watch?v=-72pShkDoLQ", "_blank")} className="px-8 py-4 border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 bg-white/50 backdrop-blur font-semibold rounded-xl transition-all transform hover:scale-105 hover:shadow-xl hover-wiggle">
               Jereo ny Demo 🎬
             </button>
           </div>
@@ -66,7 +66,7 @@ export default function Landing() {
           {/* Stats Section */}
           <div className="grid grid-cols-3 gap-6 pt-12 max-w-2xl mx-auto">
             <div className="bg-white/70 backdrop-blur rounded-xl p-4 shadow-lg transform hover:scale-105 transition-all animate-fade-in-up hover-wiggle">
-              <p className="text-3xl font-bold text-emerald-600 animate-scale-pulse">5</p>
+              <p className="text-3xl font-bold text-emerald-600 animate-scale-pulse">6</p>
               <p className="text-sm text-gray-600">Fonctionnalités IA</p>
             </div>
             <div className="bg-white/70 backdrop-blur rounded-xl p-4 shadow-lg transform hover:scale-105 transition-all animate-fade-in-up hover-wiggle" style={{animationDelay: '0.2s'}}>

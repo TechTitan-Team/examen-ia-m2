@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: hiu_algo
+      MYSQL_DATABASE: hiu_algo_db
+      MYSQL_USER: techtitan
+      MYSQL_PASSWORD: hiu_algo
+    ports:
+      - "3300:3306"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "88:80"
+    environment:
+      PMA_USER: techtitan
+      PMA_PASSWORD: hiu_algo
+
+volumes:
+  db_data:

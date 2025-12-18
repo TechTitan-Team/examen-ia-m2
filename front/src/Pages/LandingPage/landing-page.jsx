@@ -1,4 +1,4 @@
-import { BookOpen, CheckCircle, Languages, Lightbulb, RefreshCw, Sparkles, MessageSquare, Volume2, MapPin, Database, Zap, Brain } from "lucide-react"
+import { BookOpen, CheckCircle, Languages, Lightbulb, RefreshCw, Sparkles, MessageSquare, FileText, MapPin, Database, Zap, Brain } from "lucide-react"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
@@ -66,7 +66,7 @@ export default function Landing() {
           {/* Stats Section */}
           <div className="grid grid-cols-3 gap-6 pt-12 max-w-2xl mx-auto">
             <div className="bg-white/70 backdrop-blur rounded-xl p-4 shadow-lg transform hover:scale-105 transition-all animate-fade-in-up hover-wiggle">
-              <p className="text-3xl font-bold text-emerald-600 animate-scale-pulse">6</p>
+              <p className="text-3xl font-bold text-emerald-600 animate-scale-pulse">5</p>
               <p className="text-sm text-gray-600">Fonctionnalités IA</p>
             </div>
             <div className="bg-white/70 backdrop-blur rounded-xl p-4 shadow-lg transform hover:scale-105 transition-all animate-fade-in-up hover-wiggle" style={{animationDelay: '0.2s'}}>
@@ -150,7 +150,7 @@ export default function Landing() {
             </p>
             <div className="bg-blue-100 rounded-lg p-3 text-sm">
               <p className="font-semibold text-blue-800">🔧 Teknolojia:</p>
-              <p className="text-blue-700">API + Dictionnaire Local</p>
+              <p className="text-blue-700">API</p>
             </div>
           </div>
 
@@ -161,7 +161,7 @@ export default function Landing() {
             </div>
             <h3 className="text-2xl font-bold text-gray-900 mb-3">Autocomplétion Manan-tsaina 🎯</h3>
             <p className="text-gray-700 leading-relaxed mb-4">
-              Manolotra teny manaraka tsara amin'ny alalan'ny <strong>N-grams sy Markov models</strong>
+              Manolotra teny manaraka tsara amin'ny alalan'ny <strong>N-grams models</strong>
             </p>
             <div className="bg-purple-100 rounded-lg p-3 text-sm">
               <p className="font-semibold text-purple-800">🔧 Ofana:</p>
@@ -169,18 +169,18 @@ export default function Landing() {
             </div>
           </div>
 
-          {/* Feature 4 - TTS */}
+          {/* Feature 4 - Éditeur Professionnel */}
           <div className="group border-2 border-pink-200 rounded-2xl bg-gradient-to-br from-white to-pink-50 p-8 hover:shadow-2xl hover:scale-105 transition-all duration-300 hover:border-pink-400 animate-fade-in-up hover-wiggle" style={{animationDelay: '0.3s'}}>
             <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6 transform group-hover:rotate-12 group-hover:scale-110 transition-all shadow-lg animate-float" style={{animationDelay: '1.5s'}}>
-              <Volume2 className="w-8 h-8 text-white animate-scale-pulse" />
+              <FileText className="w-8 h-8 text-white animate-scale-pulse" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-3">Synthèse Vocale (TTS) 🔊</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-3">Éditeur Texte Professionnel ✍️</h3>
             <p className="text-gray-700 leading-relaxed mb-4">
-              <strong>Mamaky ny lahatsoratra</strong> amin'ny feo Malagasy tena izy - miaraka amin'ny accent loharano
+              <strong>Manoratra amin'ny fomba matihanina</strong> miaraka amin'ny fitaovana maoderina ho an'ny teny Malagasy
             </p>
             <div className="bg-pink-100 rounded-lg p-3 text-sm">
               <p className="font-semibold text-pink-800">🔧 Endrika:</p>
-              <p className="text-pink-700">Text-to-Speech miaraka amin'ny intonation Malagasy</p>
+              <p className="text-pink-700">Rich text editor miaraka amin'ny formatting Malagasy</p>
             </div>
           </div>
 

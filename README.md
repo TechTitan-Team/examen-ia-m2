@@ -29,10 +29,10 @@ Notre solution offre **6 fonctionnalités IA** pour assister les rédacteurs Mal
 |----|-----|----------------|---------|
 | **38** | **RAZAFINDRAZAKA Niaina Christopher** | Chef de Projet & Backend IA | - |
 | **40** | **Ratojonandrasana Donnat** | Frontend React & UI/UX | - |
-| **39** | **Andriamparany Safidiniana Jocelyn** | Scraping & Data Collection | - |
-| **16** | **Rabearisoa Ramanandraibe Germain** | Scraping & Data Collection | - |
+| **39** | **Andriamparany Safidiniana Jocelyn** | Frontend React | - |
+| **16** | **Rabearisoa Ramanandraibe Germain** |  Data Collection | - |
 | **23** | **RAFANOMEZANTSOA Lanto Ny Aina Onitia** | Présentatrice | - |
-| **35** | **RAMAMONJIZAFY Manitra Andonirina** | Backend IA | - |
+| **35** | **RAMAMONJIZAFY Manitra Andonirina** | Scraping & Backend IA | - |
 | **28** | **ANDRIAMANARIVO Tahiana Nomena** |  Frontend React & UI/UX | - |
 
 ---

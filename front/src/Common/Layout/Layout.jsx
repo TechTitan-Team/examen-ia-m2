@@ -6,13 +6,12 @@ import Toolbar from "@/Common/Navbar/Toolbar";
 import useHttps from "../../hooks/useHttps";
 
 export default function Layout() {
-  const { http } = useHttps();
+  const { http, iaHttp } = useHttps();
   const [editor, setEditor] = useState(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [zoom, setZoom] = useState(100); // Zoom percentage (100 = 100%)
   const [chatContext, setChatContext] = useState(null); // Last selected text
-  const [selectedText, setSelectedText] = useState(null); // Current text selection
-  const [suggestions, setSuggestions] = useState(null); // Correction suggestions
+  const [selectedText, setSelectedText] = useState(null); // Current text selection with corrections
 
   const handleZoomIn = () => {
     setZoom((prev) => Math.min(prev + 10, 200)); // Max 200%
@@ -35,24 +34,67 @@ export default function Layout() {
 
   const handleTextSelection = async (selection) => {
     if (selection && selection.text) {
-      setSelectedText(selection);
+      // Initialize selected text immediately with loading state
+      setSelectedText({
+        text: selection.text,
+        from: selection.from,
+        to: selection.to,
+        corrections: [],
+        incorrectWords: [],
+        isLoadingCorrections: true,
+        isLoadingAnalysis: true,
+        analysisData: null
+      });
+      
+      // Open sidebar if not already open
+      if (!isChatOpen) {
+        setIsChatOpen(true);
+      }
+
       // Fetch correction suggestions
       try {
         const res = await http.post("/corrector", {
           text: selection.text
         });
-        setSuggestions(res.data);
-        // Open sidebar if not already open
-        if (!isChatOpen) {
-          setIsChatOpen(true);
-        }
+        
+        setSelectedText(prev => ({
+          ...prev,
+          corrections: res.data.corrections || [],
+          incorrectWords: res.data.incorrect_words || [],
+          isLoadingCorrections: false
+        }));
       } catch (err) {
         console.error("Error fetching corrections:", err);
-        setSuggestions(null);
+        setSelectedText(prev => ({
+          ...prev,
+          corrections: [],
+          incorrectWords: [],
+          isLoadingCorrections: false
+        }));
+      }
+
+      // Fetch NER analysis in parallel
+      try {
+        const analysisRes = await iaHttp.post("/analyze", {
+          context: selection.text,
+          num_words: 10
+        });
+        
+        setSelectedText(prev => ({
+          ...prev,
+          analysisData: analysisRes.data,
+          isLoadingAnalysis: false
+        }));
+      } catch (err) {
+        console.error("Error fetching analysis:", err);
+        setSelectedText(prev => ({
+          ...prev,
+          analysisData: null,
+          isLoadingAnalysis: false
+        }));
       }
     } else {
       setSelectedText(null);
-      setSuggestions(null);
     }
   };
 
@@ -75,10 +117,28 @@ export default function Layout() {
       .insertContent(updatedText)
       .run();
     
-    // Clear selection and suggestions after a short delay to allow the replacement to complete
+    // Clear selection after a short delay to allow the replacement to complete
     setTimeout(() => {
       setSelectedText(null);
-      setSuggestions(null);
+    }, 100);
+  };
+
+  const handleReplaceFullText = (newText) => {
+    if (!editor || !selectedText) return;
+    
+    const { from, to } = selectedText;
+    
+    // Replace the entire selection with the new text
+    editor.chain()
+      .focus()
+      .setTextSelection({ from, to })
+      .deleteSelection()
+      .insertContent(newText)
+      .run();
+    
+    // Clear selection after a short delay to allow the replacement to complete
+    setTimeout(() => {
+      setSelectedText(null);
     }, 100);
   };
 
@@ -103,11 +163,10 @@ export default function Layout() {
         chatContext={chatContext}
         onClearContext={() => setChatContext(null)}
         selectedText={selectedText}
-        suggestions={suggestions}
         onReplaceText={handleReplaceText}
+        onReplaceFullText={handleReplaceFullText}
         onClearSelection={() => {
           setSelectedText(null);
-          setSuggestions(null);
         }}
       />
     </div>

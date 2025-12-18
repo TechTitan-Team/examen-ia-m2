@@ -8,9 +8,9 @@ export default function ChatSidebar({
   chatContext = null,
   onClearContext,
   selectedText = null,
-  suggestions = null,
   onReplaceText,
   onClearSelection,
+  onReplaceFullText,
 }) {
   const { http, iaHttp } = useHttps()
   const [message, setMessage] = useState("");
@@ -159,7 +159,7 @@ export default function ChatSidebar({
   };
 
   const showInput = selectedAction && (selectedAction !== "handika" || translationDirection);
-  const showSuggestions = selectedText && suggestions;
+  const showSuggestions = selectedText && selectedText.corrections && selectedText.corrections.length > 0;
   const showChat = !showSuggestions;
 
   if (!isOpen) return null;
@@ -206,10 +206,17 @@ export default function ChatSidebar({
             </div>
 
             {/* Suggestions List */}
-            {suggestions.corrections && suggestions.corrections.length > 0 ? (
+            {selectedText.isLoadingCorrections ? (
+              <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 text-center">
+                <div className="flex items-center justify-center gap-2">
+                  <RefreshCw size={16} className="animate-spin text-indigo-600" />
+                  <p className="text-sm text-slate-600">Mikaroka tsipelina diso...</p>
+                </div>
+              </div>
+            ) : selectedText.corrections && selectedText.corrections.length > 0 ? (
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-slate-800">Soso-kevitra fanitsiana:</h3>
-                {suggestions.corrections.map((correction, idx) => (
+                {selectedText.corrections.map((correction, idx) => (
                   <div key={idx} className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
                     <h4 className="text-sm font-semibold text-slate-700 mb-3">
                       Teny diso: <span className="text-red-600">{correction.word}</span>
@@ -242,6 +249,116 @@ export default function ChatSidebar({
                 <p className="text-sm font-medium text-green-700">Tsy misy tsipelina diso</p>
               </div>
             )}
+
+            {/* NER Analysis Section */}
+            <div className="mt-6 pt-6 border-t border-slate-200">
+              {selectedText.isLoadingAnalysis ? (
+                <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 text-center">
+                  <div className="flex items-center justify-center gap-2">
+                    <RefreshCw size={16} className="animate-spin text-purple-600" />
+                    <p className="text-sm text-slate-600">Manampy famakafakana...</p>
+                  </div>
+                </div>
+              ) : selectedText.analysisData ? (
+                <div className="space-y-4">
+                  {/* Autocompletion Section */}
+                  {selectedText.analysisData.autocompletion && (
+                    <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 shadow-sm">
+                      <h3 className="text-sm font-semibold text-purple-800 mb-3 flex items-center gap-2">
+                        <Sparkles size={16} />
+                        Famenoana mandeha ho azy:
+                      </h3>
+                      <div 
+                        className="bg-white rounded-lg p-3 border border-purple-100 cursor-pointer hover:bg-purple-50 hover:border-purple-300 transition-all group"
+                        onClick={() => {
+                          if (onReplaceFullText) {
+                            onReplaceFullText(selectedText.analysisData.autocompletion.full_text);
+                          }
+                        }}
+                      >
+                        <p className="text-sm text-slate-700 leading-relaxed group-hover:text-purple-700 transition-colors">
+                          {selectedText.analysisData.autocompletion.full_text}
+                        </p>
+                        <p className="text-xs text-purple-500 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                          ← Tsindrio mba hanova ny soratra
+                        </p>
+                      </div>
+                      {selectedText.analysisData.autocompletion.completion && (
+                        <p className="text-xs text-purple-600 mt-2 italic">
+                          Teny nampiana: "{selectedText.analysisData.autocompletion.completion}"
+                        </p>
+                      )}
+                    </div>
+                  )}
+
+                  {/* NER Entities Section */}
+                  {selectedText.analysisData.entities?.in_full_text?.entities?.length > 0 && (
+                    <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 shadow-sm">
+                      <h3 className="text-sm font-semibold text-emerald-800 mb-3 flex items-center gap-2">
+                        <BookOpen size={16} />
+                        Singa hita ({selectedText.analysisData.entities.in_full_text.count}):
+                      </h3>
+                      <div className="space-y-2">
+                        {selectedText.analysisData.entities.in_full_text.entities.map((entity, idx) => (
+                          <div 
+                            key={idx} 
+                            className="bg-white rounded-lg p-3 border border-emerald-100 cursor-pointer hover:bg-emerald-50 hover:border-emerald-300 transition-all group"
+                            onClick={() => {
+                              if (onReplaceText) {
+                                onReplaceText(selectedText.text, entity.entity || entity.text);
+                              }
+                            }}
+                          >
+                            <div className="flex items-start justify-between gap-2">
+                              <div className="flex-1">
+                                <p className="text-sm font-medium text-slate-700">
+                                  <span className="text-emerald-700 font-semibold group-hover:text-emerald-800">{entity.text}</span>
+                                  <span className="text-xs text-emerald-500 ml-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    → {entity.entity || entity.text}
+                                  </span>
+                                </p>
+                                <div className="flex items-center gap-2 mt-1">
+                                  <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-emerald-100 text-emerald-800">
+                                    {entity.type}
+                                  </span>
+                                  {entity.confidence && (
+                                    <span className="text-xs text-slate-500">
+                                      {Math.round(entity.confidence * 100)}% confiance
+                                    </span>
+                                  )}
+                                </div>
+                                {entity.metadata && Object.keys(entity.metadata).length > 0 && (
+                                  <div className="mt-2 space-y-1">
+                                    {Object.entries(entity.metadata).map(([key, value]) => (
+                                      <p key={key} className="text-xs text-slate-600">
+                                        <span className="font-medium capitalize">{key}:</span> {value}
+                                      </p>
+                                    ))}
+                                  </div>
+                                )}
+                                <p className="text-xs text-emerald-500 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                  ← Tsindrio mba hanova ny soratra
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Summary */}
+                  {selectedText.analysisData.summary && (
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                      <p className="text-xs text-blue-700">
+                        <span className="font-semibold">Famintinana:</span> {selectedText.analysisData.summary.total_entities_found} singa hita, 
+                        {selectedText.analysisData.summary.total_words_generated} teny novokarina
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ) : null}
+            </div>
 
             {/* Close button */}
             <button

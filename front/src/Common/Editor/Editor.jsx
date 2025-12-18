@@ -57,18 +57,7 @@ export default function Editor({ onEditorReady, zoom = 100, onTextSelection }) {
       }),
     ],
     content: `
-      <h1>Tongasoa eto amin'ny mpandika</h1>
-      <p>Ity dia mpandika lahatsoratra be endrika izay miaraka amin'ny TipTap. Manomboka manoratra mba hamoronana ny antontan-taratasinao.</p>
-      <p></p>
-      <h2>Toetra</h2>
-      <ul>
-        <li>Fanamboarana lahatsoratra be endrika (matavy, miolakolaka, misy tsipika eo ambaniny)</li>
-        <li>Ampahany lohateny maro</li>
-        <li>Safidy fametrahana lahatsoratra</li>
-        <li>Lisitra misy teboka sy misy isa</li>
-      </ul>
-      <p></p>
-      <p>Ampiasao ny fitaovana eo ambony mba hanamboarana ny votoatinao, na ampiasao ny fitendry haingana toy ny <strong>Ctrl+B</strong> ho an'ny matavy.</p>
+      <h1>Tongasoa eto amin'ny Voambolan-AI</h1>
     `,
     editorProps: {
       attributes: {

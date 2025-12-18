@@ -1,4 +1,4 @@
-import { BookOpen, CheckCircle, Languages, Lightbulb, RefreshCw, Sparkles, MessageSquare, FileText, MapPin, Database, Zap, Brain } from "lucide-react"
+import { BookOpen, CheckCircle, Languages, Lightbulb, RefreshCw, Sparkles, MessageSquare, BookMarked, MapPin, Database, Zap, Brain } from "lucide-react"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
@@ -169,18 +169,18 @@ export default function Landing() {
             </div>
           </div>
 
-          {/* Feature 4 - Éditeur Professionnel */}
+          {/* Feature 4 - Dictionnaire Intégré */}
           <div className="group border-2 border-pink-200 rounded-2xl bg-gradient-to-br from-white to-pink-50 p-8 hover:shadow-2xl hover:scale-105 transition-all duration-300 hover:border-pink-400 animate-fade-in-up hover-wiggle" style={{animationDelay: '0.3s'}}>
             <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6 transform group-hover:rotate-12 group-hover:scale-110 transition-all shadow-lg animate-float" style={{animationDelay: '1.5s'}}>
-              <FileText className="w-8 h-8 text-white animate-scale-pulse" />
+              <BookMarked className="w-8 h-8 text-white animate-scale-pulse" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-3">Éditeur Texte Professionnel ✍️</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-3">Rakibolana Mifanaraka 📖</h3>
             <p className="text-gray-700 leading-relaxed mb-4">
-              <strong>Manoratra amin'ny fomba matihanina</strong> miaraka amin'ny fitaovana maoderina ho an'ny teny Malagasy
+              <strong>Mahafantatra eo noho eo</strong> ny hevitry ny teny rehetra ao anatin'ny soratra Malagasy
             </p>
             <div className="bg-pink-100 rounded-lg p-3 text-sm">
-              <p className="font-semibold text-pink-800">🔧 Endrika:</p>
-              <p className="text-pink-700">Rich text editor miaraka amin'ny formatting Malagasy</p>
+              <p className="font-semibold text-pink-800">🔧 Fahaizana:</p>
+              <p className="text-pink-700">Rakibolana haingana miaraka amin'ny fanazavana amin'ny teny Malagasy</p>
             </div>
           </div>
 

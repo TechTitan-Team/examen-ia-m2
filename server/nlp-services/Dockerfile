@@ -13,10 +13,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Exposer le port
-EXPOSE 5001
+EXPOSE 5000
 
 # Variable d'environnement pour le port
-ENV PORT=5001
+ENV PORT=5000
 
 # Commande pour démarrer l'application
 CMD ["python", "app.py"]

@@ -16,3 +16,7 @@ build/
 .vscode/
 .idea/
 
+# Anciens dossiers (à supprimer manuellement si nécessaire)
+autocompletion/
+ner/
+

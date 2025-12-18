@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  # API d'autocomplétion
+  autocompletion:
+    build: ./autocompletion
+    container_name: malagasy-autocompletion
+    ports:
+      - "5001:5001"
+    environment:
+      - PORT=5001
+    volumes:
+      - ./autocompletion/corpus:/app/corpus:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - nlp-network
+
+  # API de reconnaissance d'entités (NER)
+  ner:
+    build: ./ner
+    container_name: malagasy-ner
+    ports:
+      - "5002:5002"
+    environment:
+      - PORT=5002
+    volumes:
+      - ./ner/entities:/app/entities:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - nlp-network
+
+networks:
+  nlp-network:
+    driver: bridge
+

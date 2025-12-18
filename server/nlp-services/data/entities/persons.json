@@ -1,0 +1,136 @@
+[
+  {
+    "name": "Andrianampoinimerina",
+    "variations": ["Nampoina", "Andrianampoinimerina I"],
+    "role": "Roi unificateur",
+    "period": "1787-1810",
+    "description": "Roi qui unifia le royaume merina"
+  },
+  {
+    "name": "Ranavalona I",
+    "variations": ["Ranavalona Ire", "Ranavalona I"],
+    "role": "Reine de Madagascar",
+    "period": "1828-1861",
+    "description": "Reine connue pour sa résistance aux influences étrangères"
+  },
+  {
+    "name": "Radama I",
+    "variations": ["Radama Ire"],
+    "role": "Roi de Madagascar",
+    "period": "1810-1828",
+    "description": "Fils d'Andrianampoinimerina, modernisa le royaume"
+  },
+  {
+    "name": "Ranavalona II",
+    "variations": ["Ranavalona II"],
+    "role": "Reine de Madagascar",
+    "period": "1868-1883",
+    "description": "Convertie au christianisme"
+  },
+  {
+    "name": "Ranavalona III",
+    "variations": ["Ranavalona III"],
+    "role": "Dernière reine de Madagascar",
+    "period": "1883-1897",
+    "description": "Dernière souveraine du royaume de Madagascar"
+  },
+  {
+    "name": "Philibert Tsiranana",
+    "variations": ["Tsiranana"],
+    "role": "Premier président",
+    "period": "1960-1972",
+    "description": "Premier président de la République de Madagascar"
+  },
+  {
+    "name": "Didier Ratsiraka",
+    "variations": ["Ratsiraka"],
+    "role": "Président",
+    "period": "1975-1993, 1997-2002",
+    "description": "Président de Madagascar durant deux périodes"
+  },
+  {
+    "name": "Marc Ravalomanana",
+    "variations": ["Ravalomanana"],
+    "role": "Président",
+    "period": "2002-2009",
+    "description": "Homme d'affaires devenu président"
+  },
+  {
+    "name": "Andry Rajoelina",
+    "variations": ["Rajoelina", "TGV"],
+    "role": "Président",
+    "period": "2019-présent",
+    "description": "Président actuel de Madagascar"
+  },
+  {
+    "name": "Jean-Joseph Rabearivelo",
+    "variations": ["Rabearivelo", "J.J. Rabearivelo"],
+    "role": "Poète",
+    "period": "1901-1937",
+    "description": "Premier poète moderne malgache"
+  },
+  {
+    "name": "Jacques Rabemananjara",
+    "variations": ["Rabemananjara"],
+    "role": "Poète et homme politique",
+    "period": "1913-2005",
+    "description": "Poète et figure de l'indépendance"
+  },
+  {
+    "name": "Clarisse Ratsifandrihamanana",
+    "variations": ["Clarisse R."],
+    "role": "Femme politique",
+    "period": "contemporain",
+    "description": "Première femme présidente de l'Assemblée nationale"
+  },
+  {
+    "name": "Norbert Ratsirahonana",
+    "variations": ["Ratsirahonana"],
+    "role": "Cardinal",
+    "period": "contemporain",
+    "description": "Cardinal catholique malgache"
+  },
+  {
+    "name": "Rado",
+    "variations": ["Rado le chanteur"],
+    "role": "Chanteur",
+    "period": "contemporain",
+    "description": "Chanteur populaire malgache"
+  },
+  {
+    "name": "Rossy",
+    "variations": ["Rossy le guitariste"],
+    "role": "Musicien",
+    "period": "contemporain",
+    "description": "Guitariste et chanteur de renommée internationale"
+  },
+  {
+    "name": "D'Gary",
+    "variations": ["D'Gary guitariste"],
+    "role": "Guitariste",
+    "period": "contemporain",
+    "description": "Virtuose de la guitare malgache"
+  },
+  {
+    "name": "Sammy",
+    "variations": ["Sammy chanteur"],
+    "role": "Chanteur",
+    "period": "contemporain",
+    "description": "Chanteur populaire malgache"
+  },
+  {
+    "name": "Nivo",
+    "variations": ["Nivo artiste"],
+    "role": "Chanteur",
+    "period": "contemporain",
+    "description": "Artiste de la nouvelle génération"
+  },
+  {
+    "name": "Gabriel Ramanantsoa",
+    "variations": ["Ramanantsoa"],
+    "role": "Général et homme d'État",
+    "period": "1972-1975",
+    "description": "Chef de l'État après la première République"
+  }
+]
+
